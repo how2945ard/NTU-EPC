@@ -1,0 +1,22 @@
+{
+  "name": "ntu",
+  "version": "0.0.0",
+  "homepage": "https://github.com/how2945ard/ntuvrepc",
+  "authors": [
+    "Howard <how2945ard@gmail.com>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.2.0",
+    "angular-bootstrap": "~0.11.0",
+    "underscore": "~1.6.0"
+  }
+}

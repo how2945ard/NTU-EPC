@@ -1,0 +1,142 @@
+<style type="text/css">
+	.block,#reel{
+		height: 100% !important;
+		border: none !important;
+	}
+	.item_small{
+		height: 50% !important;
+	}
+	.item_large{
+		height: 100% !important;
+	}
+	#main{
+		height: 100% !important;
+		top: 0% !important;
+		margin-top: 0px !important;
+	}
+	.label{
+		position: relative !important;
+	}
+	.item.thumb {
+		display: block;
+		position: relative;
+		background: none;
+		background: none;
+		cursor: default;
+	}
+	.tag{
+		width: 100%;
+		/*padding: 0px;*/
+		position:absolute;
+		height: 100%;
+	}
+	.cube{
+		margin: -10px;
+		background: #d64760 url('images/overlay.png') !important;
+		background-color: white !important;
+	}
+	.image_block{
+		display: block;
+		/*margin: -15px !important;*/
+		padding: 0px!important;
+	}
+	.model-html, .modal-header, .modal-title, .modal-body{
+		color:black;
+	}
+	.center-block{
+		margin: 15px;
+		padding: 15px !important;
+		width: 100px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+	#header{
+		background: #d64760 url('images/overlay.png') !important;
+		background-color: white !important;
+		padding: 0px;
+	}
+	.tags{
+		margin-right: 15px;
+	}
+	.up{
+		margin-top: 10px;
+	}
+	.down{
+		margin-bottom: 10px;
+	}
+	.model-html{
+		padding: 20px;
+	}
+</style>
+<body ng-controller='home'>
+	<div ng-if="dataLoading">
+	    Loading...
+	</div>
+	<script type="text/ng-template" id="myModalContent.html">
+		<div class='model-html'>
+			<div class="row">
+				<div style="position: absolute;margin-left:70%; margin-right:auto;">
+					<span ng-bind='items.videoInfo'></span>
+				</div>
+				<img class="img-responsive" ng-src='{{items.image}}/convert?w=70&h=70' onerror='this.src="/images/thumbs/08.jpg"'>
+				<h3 class="modal-title" ng-bind='items.name' ></h3>
+			</div>
+			<div class='modal-header'>
+				<span ng-bind='items.school'></span>
+				<span ng-bind='items.major'></span>
+				<span ng-bind='items.year'></span>
+				<span ng-bind='items.topic'></span>
+			</div>
+			<div class="modal-body">
+				<div class="embed-responsive embed-responsive-16by9">
+					<div id='youtubeCode'></div>
+				</div>
+			</div>
+		</div>
+	</script>
+	<div id="wrapper" ng-if="!dataLoading">
+		<div id="main">
+			<div id="reel" class="blcok">
+				<div id="header" class="item_large item tags" data-width="300" style="width: 300px !important;" ng-show='small'>
+					<div class="row inner tag">
+						<h1 style="color:black;">Categories</h1>
+						<button class="center-block btn btn-primary" ng-click='cate(0)'>All{{enroll_data.length*400}}</button>
+						<button class="center-block btn btn-primary" ng-click='cate(1)'>category1</button>
+						<button class="center-block btn btn-primary" ng-click='cate(2)'>category2</button>
+						<button class="center-block btn btn-primary" ng-click='cate(3)'>category3</button>
+						<button class="center-block btn btn-primary" ng-click='cate(4)'>category4</button>
+						<button class="center-block btn btn-primary" ng-click='cate(5)'>category5</button>
+						<button class="center-block btn btn-primary" ng-click='cate(6)'>category6</button>
+						<button class="center-block btn btn-primary" ng-click='cate(7)'>category7</button>
+						<button class="center-block btn btn-primary" ng-click='cate(8)'>category8</button>
+						<button class="center-block btn btn-primary" ng-click='cate(9)'>category9</button>
+					</div>
+				</div>
+				<div class="item_large container">
+					<article  class="item item_large thumb" data-width="400" style="width: 400px;" ng-show='small' ng-repeat='enrolls in sorted_enrolls'>
+						<div class="cube thumb up item item_small" style="width:400px;height:50%;" ng-click='open(enrolls[0])'>
+							<h2 class="label" ng-bind='enrolls[0].name'></h2>
+							<img class="image_block" ng-src="{{enrolls[0].image}}/convert?w=400&h=400" onerror='this.src="/images/thumbs/08.jpg"'>
+						</div>
+						<div class="cube thumb down item item_small" style="width:400px;height:50%;" ng-hide='!enrolls[1]'  ng-click='open(enrolls[1])'>
+							<h2 class="label" ng-bind='enrolls[1].name'></h2>
+							<img class="image_block" ng-src="{{enrolls[1].image}}/convert?w=400&h=400" onerror='this.src="/images/thumbs/08.jpg"'>
+						</div>
+						<a href="/get_enroll">
+							<div class="cube thumb item item_small" style="width:400px;height:50%;" ng-show='!enrolls[1]'>
+								<h2 class="label">Enroll now!</h2>
+								<img class="image_block" src="/images/thumbs/08.jpg" width="400">
+							</div>
+						</a>
+					</article>
+					<a href="/get_enroll">
+						<article class="item item_large thumb" data-width="{{enroll_data.length*300}}" style="width: {{enroll_data.length*300}}px !important;" ng-click='changeTag()' ng-show='small&&sorted_enrolls.length === 0'>
+							<h2>Enroll now!</h2>
+							<img src="/images/thumbs/02.jpg" alt="">
+						</article>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
