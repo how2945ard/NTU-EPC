@@ -11,7 +11,6 @@ angular.module('enroll.controller', [])
 				$scope.page = 1;
 				$scope.enroll = {}
 				filepicker.setKey("APvIX7xbrQeyWbbxZ1bMbz");
-				parallelism.init();
 			}
 			init();
 			$scope.image = function() {
