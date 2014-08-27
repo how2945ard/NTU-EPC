@@ -19,14 +19,14 @@ ActiveRecord::Schema.define(:version => 20140824160841) do
     t.string   "name"
     t.string   "school"
     t.string   "major"
-    t.decimal  "year"
+    t.integer  "year"
     t.string   "cellphone"
     t.string   "email"
     t.string   "image"
     t.string   "videoUrl"
     t.string   "videoInfo"
     t.string   "topic"
-    t.decimal  "view"
+    t.integer  "view"
   end
 
 end
