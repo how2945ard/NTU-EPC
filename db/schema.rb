@@ -12,18 +12,21 @@
 # It's strongly recommended to check this file into your version control system.
 
 ActiveRecord::Schema.define(:version => 20140824160841) do
-    create_table "enrolls", :force => true do |t|
-        t.datetime "created_at", :null => false
-        t.datetime "updated_at", :null => false
-        t.string   "name"
-        t.string   "school"
-        t.string   "major"
-        t.decimal  "year"
-        t.string   "cellphone"
-        t.string   "email"
-        t.string   "image"
-        t.string   "videoUrl"
-        t.string   "videoInfo"
-        t.string   "topic"
-    end
+
+  create_table "enrolls", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.string   "name"
+    t.string   "school"
+    t.string   "major"
+    t.decimal  "year"
+    t.string   "cellphone"
+    t.string   "email"
+    t.string   "image"
+    t.string   "videoUrl"
+    t.string   "videoInfo"
+    t.string   "topic"
+    t.decimal  "view"
+  end
+
 end
