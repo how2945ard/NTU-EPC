@@ -18,6 +18,7 @@ angular.module('home.controller', ['underscore'])
 				}).finally(function() {
 					console.log('end')
 				});
+				$scope.predicate = "-created_at";
 			}
 			init();
 			var bodyRef = angular.element($document[0].body);

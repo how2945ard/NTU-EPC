@@ -1,14 +1,17 @@
 <style type="text/css">
-	#main{
-		top:30% !important;
-		overflow: visible !important;
-	}
 	.label{
-		padding:5px !important;
+		padding:15px !important;
 		font-size:15px;
 	}
 	.display_block{
 		position:absolute;
+	}
+	.row:first-child>* {
+		padding-top: 15px !important;
+		padding-left: 0px;
+	}
+	.row+.row>* {
+		padding: 0px;
 	}
 </style>
 <body ng-controller='enroll'>
@@ -23,7 +26,7 @@
 			<form name='form' class="form-group center-block col-lg-6" novalidate>
 				<div ng-show='page==1'>
 					<div class="row">
-						<span style="padding-top:5px !important;" class="label label-primary">Name</span>
+						<span class="label label-primary">Name</span>
 						<input class="form-control" ng-model='enroll.name' popover-placement="right" popover="I appeared on mouse enter!" popover-trigger="focus">
 					</div>
 					<div class="row">
@@ -42,7 +45,7 @@
 				</div>
 				<div ng-show='page==2'>
 					<div class="row">
-						<span style="padding-top:5px !important;" class="label label-primary">Cellphone</span>
+						<span class="label label-primary">Cellphone</span>
 						<input class="form-control" ng-model='enroll.cellphone' popover-placement="right" popover="I appeared on mouse enter!" popover-trigger="focus">
 					</div>
 					<div class="row">
@@ -58,7 +61,7 @@
 				</div>
 				<div ng-show='page==3'>
 					<div class="row">
-						<span style="padding-top:5px !important;" class="label label-primary">Video Url</span>
+						<span class="label label-primary">Video Url</span>
 						<input type="url"name='videoUrl' class="form-control" ng-model='enroll.videoUrl' popover-placement="right" popover="I appeared on mouse enter!" popover-trigger="focus">
 					</div>
 					<div class="row">
