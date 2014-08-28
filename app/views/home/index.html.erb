@@ -1,26 +1,4 @@
 <body class="homepage" ng-controller='home'>
-	<script type="text/ng-template" id="myModalContent.html">
-		<div class='model-html'>
-			<div class="row">
-				<div>
-					<span ng-bind='items.videoInfo'></span>
-				</div>
-				<img class="img-responsive" ng-src='{{items.image}}/convert?w=70&h=70'>
-				<h3 class="modal-title" ng-bind='items.name' ></h3>
-			</div>
-			<div class='modal-header'>
-				<span ng-bind='items.school'></span>
-				<span ng-bind='items.major'></span>
-				<span ng-bind='items.year'></span>
-				<span ng-bind='items.topic'></span>
-			</div>
-			<div class="modal-body">
-				<div class="embed-responsive embed-responsive-16by9">
-					<div id='youtubeCode'></div>
-				</div>
-			</div>
-		</div>
-	</script>
 	<!-- Banner -->
 	<div id="banner-wrapper">
 		<div id="banner" class="box container">
@@ -58,7 +36,7 @@
 									<small ng-bind='enroll.topic'></small>
 								</p>
 							</header>
-							<p ng-bind='enroll.videoInfo'></p>
+							<p class="trim-info" ng-bind='enroll.videoInfo'></p>
 						</div>
 					</section>
 				</div>

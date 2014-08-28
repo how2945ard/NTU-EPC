@@ -21,7 +21,6 @@ angular.module('home.controller', ['underscore'])
 				$scope.predicate = "-created_at";
 			}
 			init();
-			var bodyRef = angular.element($document[0].body);
 			$scope.cate = function($index) {
 				console.log($scope.data)
 				if (!$index) {
@@ -30,6 +29,7 @@ angular.module('home.controller', ['underscore'])
 					$scope.currentCate.topic = $index
 				}
 			}
+			var bodyRef = angular.element($document[0].body);
 			$scope.open = function(model) {
 				bodyRef.addClass('ovh');
 				var modalInstance = $modal.open({

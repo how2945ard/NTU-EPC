@@ -1,13 +1,13 @@
 Ntu::Application.routes.draw do
-  resources :tags
-
-
   scope '/api' do
+    resources :tags
     resources :enrolls
+    resources :users
   end
   root :to => 'home#index'
   get '/get_enroll' => 'home#get_enroll'
   get '/enrolls' => 'home#show'
+  get '/get_current_user' => 'application#get_current_user'
   match 'auth/:provider/callback', to: 'sessions#create'
   match 'auth/failure', to: redirect('/')
   match 'signout', to: 'sessions#destroy', as: 'signout'

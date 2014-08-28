@@ -1,11 +1,4 @@
 <style type="text/css">
-	.label{
-		padding:15px !important;
-		font-size:15px;
-	}
-	.display_block{
-		position:absolute;
-	}
 	.row:first-child>* {
 		padding-top: 15px !important;
 		padding-left: 0px;
@@ -13,18 +6,30 @@
 	.row+.row>* {
 		padding: 0px;
 	}
+	#footer{
+		font-size: 10px !important;
+		height: 20%;
+		z-index: 100;
+	}
+	.row{padding: 10px;}
+	#main{
+		height:100% !important;
+	}
+	.popover{
+		color: red;
+		font-size: 15px;
+		width: 100%;
+	}
+	.label{
+		padding:15px !important;
+		font-size:15px;
+	}
 </style>
 <body ng-controller='enroll'>
 	<div id="wrapper" class="container">
 		<div id="main" class="row">
-			<div class="col-lg-3 display_block">
-				<img ng-src="{{enroll.image}}/convert?w=300&h=300" ng-show='enroll.image'>
-				<div class="embed-responsive embed-responsive-16by9">
-					<div id='youtubeCode'></div>
-				</div>
-			</div>
 			<form name='form' class="form-group center-block col-lg-6" novalidate>
-				<div ng-show='page==1'>
+				<div ng-show='page==1'  style="width:100%;" >
 					<div class="row">
 						<span class="label label-primary">Name</span>
 						<input class="form-control" ng-model='enroll.name' popover-placement="right" popover="I appeared on mouse enter!" popover-trigger="focus">
@@ -51,6 +56,7 @@
 					<div class="row">
 						<span class="label label-primary">Image</span>
 						<button class="form-control" ng-model='enroll.image' ng-click='image()' popover-placement="right" popover="I appeared on mouse enter!" popover-trigger="mouseenter">Upload Image</button>
+						<img ng-src="{{enroll.image}}" style="width:100%;" ng-show='enroll.image'>
 					</div>
 					<div class="row">
 						<span class="label label-primary">Email</span>
@@ -62,16 +68,19 @@
 				<div ng-show='page==3'>
 					<div class="row">
 						<span class="label label-primary">Video Url</span>
-						<input type="url"name='videoUrl' class="form-control" ng-model='enroll.videoUrl' popover-placement="right" popover="I appeared on mouse enter!" popover-trigger="focus">
-					</div>
-					<div class="row">
-						<span class="label label-primary">Video info</span>
-						<input class="form-control" ng-model='enroll.videoInfo' popover-placement="right" popover="I appeared on mouse enter!" popover-trigger="focus">
+						<input type="url" name='videoUrl' class="form-control" ng-model='enroll.videoUrl' popover-placement="right" popover="I appeared on mouse enter!" popover-trigger="focus">
+						<div class="embed-responsive embed-responsive-16by9" style="width:100%;" ng-show='enroll.videoUrl'>
+							<div id='preview'></div>
+						</div>
 					</div>
 					<div class="row">
 						<span class="label label-primary">Video topic</span>
 						<input class="form-control" ng-model='enroll.topic' popover-placement="right" popover="I appeared on mouse enter!" popover-trigger="focus">
 					</div>
+					<div class="row">
+						<span class="label label-primary">Video info</span>
+					</div>
+						<textarea class="form-control" ui-tinymce ng-model='enroll.videoInfo' popover-placement="right" style="width:100%" popover="I appeared on mouse enter!" popover-trigger="focus"></textarea>
 					<button class="btn btn-primary" ng-click='previous(page)'>Previous</button>
 					<button class="btn btn-primary" ng-click='finish(page)'>Finish</button>
 				</div>

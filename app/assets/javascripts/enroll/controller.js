@@ -4,13 +4,20 @@
 
 /* Directives */
 angular.module('enroll.controller', [])
-	.controller("enroll", ['$scope', '$http', '$window',
-		function($scope, $http, $window) {
+	.controller("enroll", ['$scope', '$http', '$window', '$rootScope', '$document', '$modal',
+
+		function($scope, $http, $window, $rootScope, $document, $modal) {
 			function init() {
 				console.log('enroll')
-				$scope.page = 1;
-				$scope.enroll = {}
-				filepicker.setKey("APvIX7xbrQeyWbbxZ1bMbz");
+				$http.get('/get_current_user').success(function(data, status, headers, config) {
+					console.log(data)
+					$rootScope.current_user = data
+					$scope.page = 1;
+					$scope.enroll = {}
+					filepicker.setKey("APvIX7xbrQeyWbbxZ1bMbz");
+					$scope.enroll.name = $rootScope.current_user.name
+					$scope.enroll.email = $rootScope.current_user.email
+				})
 			}
 			init();
 			$scope.image = function() {
@@ -25,13 +32,14 @@ angular.module('enroll.controller', [])
 					var regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
 					var match = $scope.enroll.videoUrl.match(regExp);
 					if (match && match[2].length == 11) {
-						$('#youtubeCode').html('<iframe class="embed-responsive-item" width="300" height="168.75" src="//www.youtube.com/embed/' + match[2] + '" frameborder="0" allowfullscreen></iframe>');
+						$('#preview').html('<iframe class="embed-responsive-item" width="300" height="168.75" src="//www.youtube.com/embed/' + match[2] + '" frameborder="0" allowfullscreen></iframe>');
 					} else {
 						return 'error';
 					}
 				}
 			})
 			$scope.next = function(page) {
+				$scope.page = page + 1
 				if (page === 1) {
 					var require_name = !$scope.enroll.name
 					var require_school = !$scope.enroll.school
@@ -67,13 +75,51 @@ angular.module('enroll.controller', [])
 						alertify.error('Error, try again')
 					else {
 						$http.post('/api/enrolls', $scope.enroll).success(function(data, status, headers, config) {
-							alertify.success('Enroll success, wait for email')
-							alertify.success('Thanks,' + data.name)
+							alertify.success('Thanks,' + data.name + '.And now wait for our email')
+							$scope.open(data)
 						})
 					}
 				} else {
 					alertify.error('Error, refresh again')
 				}
 			}
+			var bodyRef = angular.element($document[0].body);
+			$scope.open = function(model) {
+				bodyRef.addClass('ovh');
+				var modalInstance = $modal.open({
+					templateUrl: 'myModalContent.html',
+					controller: ModalInstanceCtrl,
+					resolve: {
+						items: function() {
+							return model;
+						}
+					}
+				});
+				modalInstance.result.then(function(selectedItem) {
+					// Remove it on closing
+					bodyRef.removeClass('ovh');
+					$scope.selected = selectedItem;
+				}, function() {
+					// Remove it on dismissal
+					bodyRef.removeClass('ovh');
+					$log.info('Modal dismissed at: ' + new Date());
+				});
+			}
 		}
 	]);
+var ModalInstanceCtrl = function($scope, $modalInstance, items, $timeout) {
+	$scope.items = items;
+	$timeout(function() {
+		var regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+		var match = $scope.items.videoUrl.match(regExp);
+		if (match && match[2].length == 11) {
+			$('#youtubeCode').html('<iframe class="embed-responsive-item" width="300" height="168.75" src="//www.youtube.com/embed/' + match[2] + '" frameborder="0" allowfullscreen></iframe>');
+		}
+	}, 0)
+	$scope.ok = function() {
+		$modalInstance.close("ok");
+	};
+	$scope.cancel = function() {
+		$modalInstance.dismiss('cancel');
+	};
+};

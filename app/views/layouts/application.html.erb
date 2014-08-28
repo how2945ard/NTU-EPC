@@ -6,9 +6,7 @@
 		<%= javascript_include_tag "application" %>
 		<!-- Latest compiled and minified CSS -->
 		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-		<!-- Optional theme -->
 		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-		<!-- Latest compiled and minified JavaScript -->
 		<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 		<meta name="viewport" content="width=1200,user-scalable=no" />
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
@@ -24,6 +22,7 @@
 		<script src="/js/skel.min.js"></script>
 		<script src="/js/skel-layers.min.js"></script>
 		<script src="/js/init.js"></script>
+		<script src="/js/tinymce.js" type="text/javascript"></script>
 		<script type="text/javascript" src="//api.filepicker.io/v1/filepicker.js"></script>
 		<noscript>
 		<link rel="stylesheet" href="/css/skel.css" />
@@ -34,46 +33,70 @@
 		<%= csrf_meta_tags %>
 	</head>
 	<body>
+		<script type="text/ng-template" id="myModalContent.html">
+			<div class="model-html">
+				<div class="thumbnail">
+					<div class="embed-responsive embed-responsive-16by9">
+						<div id='youtubeCode'></div>
+					</div>
+					<div class="caption">
+						<div class='model-image'>
+							<img class="img-responsive" ng-src='{{items.image}}/convert?w=70&h=70'>
+						</div>
+						<h3 class="model-title" ng-bind='items.name' ></h3>
+						<p>
+						<span ng-bind='items.school'></span>
+						<span ng-bind='items.major'></span>
+						<span ng-bind='items.year'></span>
+						<span ng-bind='items.topic'></span>
+						<div>
+							<span ng-bind-html='items.videoInfo'></span>
+						</div>
+						</p>
+						<p>
+						</p>
+					</div>
+				</div>
+			</div>
+		</script>
 		<!-- Header -->
 		<div id="header-wrapper">
-			<div id="user_nav">
-				<% if current_user %>
-				Signed in as <strong><%= current_user.name %></strong>!
-				<%= link_to "Sign out", signout_path, id: "sign_out" %>
-				<% else %>
-				<%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>
-				<% end %>
-			</div>
 			<header id="header" class="container">
 				<!-- Logo -->
 				<div id="logo">
-					<h1><a href="/">Verti</a></h1>
-					<span>by HTML5 UP</span>
+					<h1><a href="/">NTU</a></h1>
+					<span>by </span>
 				</div>
 				<!-- Nav -->
 				<nav id="nav">
-					<ul>
-						<li class="current"><a href="/">Welcome</a></li>
-						<!-- <li>
-								<a href="">Dropdown</a>
-								<ul>
+					<ul ng-controller='myApp'>
+						<li><a href="/">Index</a></li>
+						<!-- 						<li>
+							<a href="">More</a>
+							<ul>
+								<li><a href="#">Lorem ipsum dolor</a></li>
+								<li><a href="#">Magna phasellus</a></li>
+								<li>
+									<a href="">Phasellus consequat</a>
+									<ul>
 										<li><a href="#">Lorem ipsum dolor</a></li>
+										<li><a href="#">Phasellus consequat</a></li>
 										<li><a href="#">Magna phasellus</a></li>
-										<li>
-												<a href="">Phasellus consequat</a>
-												<ul>
-														<li><a href="#">Lorem ipsum dolor</a></li>
-														<li><a href="#">Phasellus consequat</a></li>
-														<li><a href="#">Magna phasellus</a></li>
-														<li><a href="#">Etiam dolore nisl</a></li>
-												</ul>
-										</li>
-										<li><a href="#">Veroeros feugiat</a></li>
-								</ul>
+										<li><a href="#">Etiam dolore nisl</a></li>
+									</ul>
+								</li>
+								<li><a href="#">Veroeros feugiat</a></li>
+							</ul>
 						</li> -->
-						<li><a href="left-sidebar.html">Left Sidebar</a></li>
-						<li><a href="right-sidebar.html">Right Sidebar</a></li>
-						<li><a href="no-sidebar.html">No Sidebar</a></li>
+						<li><a href="/get_enroll">Enroll now</a></li>
+						<li><a href="/enrolls">Others</a></li>
+						<li ng-if='!!current_user'>
+							<strong ng-bind='current_user.name'></strong>
+							<a href='/signout' id='sign_out' ng-click='login()'>Sign out</a>
+						</li>
+						<li ng-if='!current_user'>
+							<a href='/auth/facebook' id='sign_in' ng-click='logout()'>Sign in with Facebook</a>
+						</li>
 					</ul>
 				</nav>
 			</header>

@@ -1,5 +1,11 @@
 class ApplicationController < ActionController::Base
 	protect_from_forgery
+
+	def get_current_user
+		@user= current_user
+		render json: JSON.parse(@user.to_json)
+	end
+
 	private
 
 	def current_user
