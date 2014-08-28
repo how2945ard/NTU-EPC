@@ -9,7 +9,7 @@ class AddDetailToEnrolls < ActiveRecord::Migration
 		add_column :enrolls, :image, :string
 		add_column :enrolls, :videoUrl, :string
 		add_column :enrolls, :videoInfo, :string
-		add_column :enrolls, :topic, :string
+		add_column :enrolls, :topic, :integer, :references=> :topics
 		add_column :enrolls, :view, :integer
 		add_column :enrolls, :vote, :integer
 		add_column :enrolls, :user_id, :integer, :references=> :users
