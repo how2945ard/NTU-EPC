@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140824160841) do
+ActiveRecord::Schema.define(:version => 20140828044953) do
 
   create_table "enrolls", :force => true do |t|
     t.datetime "created_at", :null => false
@@ -27,6 +27,16 @@ ActiveRecord::Schema.define(:version => 20140824160841) do
     t.string   "videoInfo"
     t.string   "topic"
     t.integer  "view"
+  end
+
+  create_table "users", :force => true do |t|
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "name"
+    t.string   "oauth_token"
+    t.datetime "oauth_expires_at"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
   end
 
 end
