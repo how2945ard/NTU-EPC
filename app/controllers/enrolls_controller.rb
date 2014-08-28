@@ -49,6 +49,6 @@ class EnrollsController < ApplicationController
   def destroy
     @enroll = Enroll.find(params[:id])
     @enroll.destroy
-    render json: JSON.parse({msg:"success"})
+    render json: JSON.parse({msg:"success"}.to_json)
   end
 end
