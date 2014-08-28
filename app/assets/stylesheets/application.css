@@ -1,0 +1,32 @@
+/*
+* This is a manifest file that'll be compiled into application.css, which will include all the files
+* listed below.
+*
+* Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+* or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+*
+* You're free to add application-wide styles to this file and they'll appear at the top of the
+* compiled file, but it's generally better to create a new file per style scope.
+*
+*= require_self
+*= require alertify
+*= require_tree .
+*/
+.center-block {float: none !important}
+html{font-size: 40px !important}
+body{font-size: 20px !important}
+#footer{
+	font-size: 10px !important;
+	height: 20%;
+	z-index: 100;
+}
+.row{padding: 10px}
+#main{
+	height:100% !important;
+	margin-top: -10% !important;
+}
+.popover{
+	color: red;
+	font-size: 15px;
+	width: 100%;
+}

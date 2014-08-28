@@ -1,0 +1,81 @@
+<style type="text/css">
+	.label{
+		padding:15px !important;
+		font-size:15px;
+	}
+	.display_block{
+		position:absolute;
+	}
+	.row:first-child>* {
+		padding-top: 15px !important;
+		padding-left: 0px;
+	}
+	.row+.row>* {
+		padding: 0px;
+	}
+</style>
+<body ng-controller='enroll'>
+	<div id="wrapper" class="container">
+		<div id="main" class="row">
+			<div class="col-lg-3 display_block">
+				<img ng-src="{{enroll.image}}/convert?w=300&h=300" ng-show='enroll.image'>
+				<div class="embed-responsive embed-responsive-16by9">
+					<div id='youtubeCode'></div>
+				</div>
+			</div>
+			<form name='form' class="form-group center-block col-lg-6" novalidate>
+				<div ng-show='page==1'>
+					<div class="row">
+						<span class="label label-primary">Name</span>
+						<input class="form-control" ng-model='enroll.name' popover-placement="right" popover="I appeared on mouse enter!" popover-trigger="focus">
+					</div>
+					<div class="row">
+						<span class="label label-primary">School</span>
+						<input class="form-control" ng-model='enroll.school' popover-placement="right" popover="I appeared on mouse enter!" popover-trigger="focus">
+					</div>
+					<div class="row">
+						<span class="label label-primary">Major</span>
+						<input class="form-control" ng-model='enroll.major' popover-placement="right" popover="I appeared on mouse enter!" popover-trigger="focus">
+					</div>
+					<div class="row">
+						<span class="label label-primary">Year</span>
+						<input class="form-control" ng-model='enroll.year' popover-placement="right" popover="I appeared on mouse enter!" popover-trigger="focus">
+					</div>
+					<button class="btn btn-primary" ng-click='next(page)'>Next</button>
+				</div>
+				<div ng-show='page==2'>
+					<div class="row">
+						<span class="label label-primary">Cellphone</span>
+						<input class="form-control" ng-model='enroll.cellphone' popover-placement="right" popover="I appeared on mouse enter!" popover-trigger="focus">
+					</div>
+					<div class="row">
+						<span class="label label-primary">Image</span>
+						<button class="form-control" ng-model='enroll.image' ng-click='image()' popover-placement="right" popover="I appeared on mouse enter!" popover-trigger="mouseenter">Upload Image</button>
+					</div>
+					<div class="row">
+						<span class="label label-primary">Email</span>
+						<input class="form-control" ng-model='enroll.email' popover-placement="right" popover="I appeared on mouse enter!" popover-trigger="focus">
+					</div>
+					<button class="btn btn-primary" ng-click='previous(page)'>Previous</button>
+					<button class="btn btn-primary" ng-click='next(page)'>Next</button>
+				</div>
+				<div ng-show='page==3'>
+					<div class="row">
+						<span class="label label-primary">Video Url</span>
+						<input type="url"name='videoUrl' class="form-control" ng-model='enroll.videoUrl' popover-placement="right" popover="I appeared on mouse enter!" popover-trigger="focus">
+					</div>
+					<div class="row">
+						<span class="label label-primary">Video info</span>
+						<input class="form-control" ng-model='enroll.videoInfo' popover-placement="right" popover="I appeared on mouse enter!" popover-trigger="focus">
+					</div>
+					<div class="row">
+						<span class="label label-primary">Video topic</span>
+						<input class="form-control" ng-model='enroll.topic' popover-placement="right" popover="I appeared on mouse enter!" popover-trigger="focus">
+					</div>
+					<button class="btn btn-primary" ng-click='previous(page)'>Previous</button>
+					<button class="btn btn-primary" ng-click='finish(page)'>Finish</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</body>
