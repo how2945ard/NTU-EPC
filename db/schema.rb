@@ -27,7 +27,6 @@ ActiveRecord::Schema.define(:version => 20140828114357) do
     t.string   "videoInfo"
     t.integer  "topic"
     t.integer  "view"
-    t.integer  "vote"
     t.integer  "user_id"
   end
 

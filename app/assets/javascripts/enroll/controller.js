@@ -9,6 +9,50 @@ angular.module('enroll.controller', [])
 		function($scope, $http, $window, $rootScope, $document, $modal) {
 			function init() {
 				console.log('enroll')
+				$scope.topics = [{
+					value: 0,
+					index: 'choice1'
+				}, {
+					value: 1,
+					index: 'choice2'
+				}]
+				$scope.years = [{
+					value: 0,
+					index: '大學一年級'
+				}, {
+					value: 1,
+					index: '大學二年級'
+				}, {
+					value: 2,
+					index: '大學三年級'
+				}, {
+					value: 3,
+					index: '大學四年級'
+				}, {
+					value: 4,
+					index: '大學五年級'
+				}, {
+					value: 5,
+					index: '大學六年級'
+				}, {
+					value: 6,
+					index: '大學七年級'
+				}, {
+					value: 7,
+					index: '碩士一年級'
+				}, {
+					value: 8,
+					index: '碩士二年級'
+				}, {
+					value: 9,
+					index: '博士一年級'
+				}, {
+					value: 10,
+					index: '博士二年級'
+				}, {
+					value: 11,
+					index: '其他'
+				}]
 				$http.get('/get_current_user').success(function(data, status, headers, config) {
 					console.log(data)
 					$rootScope.current_user = data
@@ -17,15 +61,28 @@ angular.module('enroll.controller', [])
 					filepicker.setKey("APvIX7xbrQeyWbbxZ1bMbz");
 					$scope.enroll.name = $rootScope.current_user.name
 					$scope.enroll.email = $rootScope.current_user.email
+					$http.get('/api/enrolls/' + $rootScope.current_user.enroll.id).success(
+						function(data, status) {
+							if (status !== 200) {
+								$scope.enrolled = false
+							} else {
+								$scope.enrolled = true
+								$scope.enroll = data
+								$scope.enroll_id = data.id
+							}
+						})
 				})
 			}
 			init();
 			$scope.image = function() {
+				// bodyRef.addClass('ovh');
 				filepicker.pick(function(InkBlob) {
 					$scope.enroll.image = InkBlob.url
 					alertify.success('image uploaded')
 					$scope.$apply()
+					// bodyRef.removeClass('ovh');
 				});
+				// bodyRef.removeClass('ovh');
 			}
 			$scope.$watch('enroll.videoUrl', function() {
 				if (!$scope.form.videoUrl.$error.url && $scope.enroll.videoUrl) {
@@ -39,7 +96,6 @@ angular.module('enroll.controller', [])
 				}
 			})
 			$scope.next = function(page) {
-				$scope.page = page + 1
 				if (page === 1) {
 					var require_name = !$scope.enroll.name
 					var require_school = !$scope.enroll.school
@@ -58,6 +114,17 @@ angular.module('enroll.controller', [])
 						alertify.error('Error, try again')
 					} else {
 						$scope.page = page + 1
+						$scope.enroll.user_id = $rootScope.current_user.id
+						if ($scope.enrolled) {
+							$http.put('/api/enrolls/' + $scope.enroll_id, $scope.enroll).success(function(data, status, headers, config) {
+								$scope.enroll_id = data.id
+							})
+						} else {
+							$http.post('/api/enrolls', $scope.enroll).success(function(data, status, headers, config) {
+								$scope.enroll_id = data.id
+								$scope.enrolled = true
+							})
+						}
 					}
 				} else {
 					alertify.error('Error, refresh again')
@@ -74,7 +141,8 @@ angular.module('enroll.controller', [])
 					if (require_videoUrl || require_videoUrl || require_topic || $scope.form.videoUrl.$error.url)
 						alertify.error('Error, try again')
 					else {
-						$http.post('/api/enrolls', $scope.enroll).success(function(data, status, headers, config) {
+						$scope.enroll.user_id = $rootScope.current_user.id
+						$http.put('/api/enrolls/' + $scope.enroll_id, $scope.enroll).success(function(data, status, headers, config) {
 							alertify.success('Thanks,' + data.name + '.And now wait for our email')
 							$scope.open(data)
 						})

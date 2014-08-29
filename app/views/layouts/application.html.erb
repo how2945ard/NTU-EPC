@@ -49,8 +49,9 @@
 						<span ng-bind='items.major'></span>
 						<span ng-bind='items.year'></span>
 						<span ng-bind='items.topic'></span>
+						<span ng-bind='items.view'></span>
 						<div>
-							<span ng-bind-html='items.videoInfo'></span>
+							<div ng-bind-html="trustedHtml"></div>
 						</div>
 						</p>
 						<p>

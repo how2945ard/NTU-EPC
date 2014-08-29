@@ -6,6 +6,16 @@ class EnrollsController < ApplicationController
     render json: JSON.parse(@enrolls.to_json)
   end
 
+  def view
+    @enroll =Enroll.find(params[:id])
+    if @enroll.view.nil?
+      @enroll.view =0
+    end
+    @enroll.view +=1
+    @enroll.save
+    render json: JSON.parse(@enroll.to_json)
+  end
+
   # GET /enrolls/1
   # GET /enrolls/1.json
   def show
@@ -26,6 +36,7 @@ class EnrollsController < ApplicationController
   # POST /enrolls.json
   def create
     @enroll = Enroll.new(params[:enroll])
+    @enroll.view =0
     if @enroll.save
       render json: JSON.parse(@enroll.to_json)
     else

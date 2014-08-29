@@ -8,6 +8,7 @@ Ntu::Application.routes.draw do
   get '/get_enroll' => 'home#get_enroll'
   get '/enrolls' => 'home#show'
   get '/get_current_user' => 'application#get_current_user'
+  post '/view_increase' => 'enrolls#view'
   match 'auth/:provider/callback', to: 'sessions#create'
   match 'auth/failure', to: redirect('/')
   match 'signout', to: 'sessions#destroy', as: 'signout'

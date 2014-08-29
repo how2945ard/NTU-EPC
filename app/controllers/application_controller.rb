@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
 
 	def get_current_user
 		@user= current_user
-		render json: JSON.parse(@user.to_json)
+		render json: JSON.parse(@user.to_json(:include=>:enroll))
 	end
 
 	private

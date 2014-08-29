@@ -20,7 +20,7 @@
 	<div id="features-wrapper">
 		<div class="container">
 			<div class="row">
-				<div class="4u" ng-repeat='enroll in enrolls | orderBy: predicate | limitTo:"3"' ng-click='open(enroll)'>
+				<div class="4u" ng-repeat='enroll in enrolls' ng-click='open(enroll)' ng-if='enroll.topic&&enroll.videoUrl&&enroll.videoInfo'>
 					<!-- Box -->
 					<section class="box feature"  >
 						<a class="image featured">
@@ -30,15 +30,36 @@
 							<header>
 								<h2 ng-bind='enroll.name'></h2>
 								<p>
-									<small ng-bind='enroll.school'></small>
-									<small ng-bind='enroll.major'></small>
-									<small ng-bind='enroll.year'></small>
-									<small ng-bind='enroll.topic'></small>
+								<small ng-bind='enroll.school'></small>
+								<small ng-bind='enroll.major'></small>
+								<small ng-bind='years[enroll.year].index'></small>
+								<small ng-bind='topics[enroll.topic].index'></small>
 								</p>
 							</header>
-							<p class="trim-info" ng-bind='enroll.videoInfo'></p>
+							<p ng-bind='enroll.videoInfo | limitTo: 70'></p>
+							<p style="color:blue;" ng-if='enroll.videoInfo.length>=70'>
+							click to see more
+							</p>
 						</div>
 					</section>
+				</div>
+				<div class="4u" ng-if='enrolls.length<=2'>
+					<!-- Box -->
+					<a href="/get_enroll" style="text-decoration: none;">
+						<section class="box feature">
+							<div class="image featured">
+								<img class="image_block" src="http://cw1.tw/CW/images/article/C1397790720421.jpg" onerror='this.src=""'>
+							</div>
+							<div class="inner">
+								<header>
+									<h2>BE THE NEXT</h2>
+									<p>
+									Get Enrolled now
+									</p>
+								</header>
+							</div>
+						</section>
+					</a>
 				</div>
 			</div>
 		</div>
@@ -81,4 +102,4 @@
 			</div>
 		</div>
 	</div>
-	</body>
+</body>
