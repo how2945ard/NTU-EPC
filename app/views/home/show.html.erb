@@ -7,7 +7,14 @@
 	<div id="features-wrapper">
 		<div class="container">
 			<div class="row">
-				<div class="4u" ng-repeat='enroll in enrolls' ng-click='open(enroll)' ng-if='enroll.topic&&enroll.videoUrl&&enroll.videoInfo'>
+				<div class="1u" ng-click='cate()'>
+					All
+				</div>
+				<div class="1u" ng-repeat='topic in topics' ng-bind='topic.index' ng-click='cate(topic.value)'>
+				</div>
+			</div>
+			<div class="row">
+				<div class="4u" ng-repeat='enroll in enrolls |filter:currentCate' ng-click='open(enroll)'>
 					<!-- Box -->
 					<section class="box feature"  >
 						<a class="image featured">

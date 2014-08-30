@@ -33,6 +33,7 @@
 		<%= csrf_meta_tags %>
 	</head>
 	<body>
+		<div id="fb-root"></div>
 		<script type="text/ng-template" id="myModalContent.html">
 			<div class="model-html">
 				<div class="thumbnail">
@@ -47,14 +48,11 @@
 						<p>
 						<span ng-bind='items.school'></span>
 						<span ng-bind='items.major'></span>
-						<span ng-bind='items.year'></span>
-						<span ng-bind='items.topic'></span>
+						<span ng-bind='years[items.year].index'></span>
+						<span ng-bind='topics[items.topic].index'></span>
 						<span ng-bind='items.view'></span>
-						<div>
-							<div ng-bind-html="trustedHtml"></div>
-						</div>
 						</p>
-						<p>
+						<p ng-bind='items.videoInfo'>
 						</p>
 					</div>
 				</div>
@@ -93,10 +91,10 @@
 						<li><a href="/enrolls">Others</a></li>
 						<li ng-if='!!current_user'>
 							<strong ng-bind='current_user.name'></strong>
-							<a href='/signout' id='sign_out' ng-click='login()'>Sign out</a>
+							<a href='/signout' id='sign_out'>Sign out</a>
 						</li>
 						<li ng-if='!current_user'>
-							<a href='/auth/facebook' id='sign_in' ng-click='logout()'>Sign in with Facebook</a>
+							<a href='/auth/facebook' id='sign_in'>Sign in with Facebook</a>
 						</li>
 					</ul>
 				</nav>

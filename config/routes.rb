@@ -5,6 +5,7 @@ Ntu::Application.routes.draw do
     resources :users
   end
   root :to => 'home#index'
+  get '/enrolls/:id' => 'home#indi'
   get '/get_enroll' => 'home#get_enroll'
   get '/enrolls' => 'home#show'
   get '/get_current_user' => 'application#get_current_user'

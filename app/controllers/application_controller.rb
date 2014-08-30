@@ -2,8 +2,12 @@ class ApplicationController < ActionController::Base
 	protect_from_forgery
 
 	def get_current_user
-		@user= current_user
-		render json: JSON.parse(@user.to_json(:include=>:enroll))
+		if current_user
+			@user= current_user
+			render json: JSON.parse(@user.to_json(:include=>:enroll))
+		else
+			render json: JSON.parse({msg:'not login'}.to_json)
+		end
 	end
 
 	private

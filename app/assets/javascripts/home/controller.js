@@ -3,8 +3,8 @@
 'use strict';
 /* Directives */
 angular.module('home.controller', ['underscore'])
-	.controller("home", ['$sce', '$scope', '$http', '$window', '$modal', '$filter', '_', '$timeout', '$document', '$log',
-		function($sce, $scope, $http, $window, $modal, $filter, _, $timeout, $document, $log) {
+	.controller("home", ['$sce', '$scope', '$http', '$window', '$modal', '$filter', '_', '$timeout', '$document', '$log', '$location',
+		function($sce, $scope, $http, $window, $modal, $filter, _, $timeout, $document, $log, $location) {
 			function init() {
 				$scope.topics = [{
 					value: 0,
@@ -59,7 +59,7 @@ angular.module('home.controller', ['underscore'])
 				$http.get('/api/enrolls').success(function(data) {
 					$scope.enrolls = []
 					angular.forEach(data, function(value, index) {
-						if (value.topic && value.videoUrl && value.videoInfo) {
+						if (value.topic !== undefined && value.videoUrl !== undefined && value.videoInfo !== undefined) {
 							$scope.enrolls.push(value)
 						}
 					})
@@ -67,8 +67,14 @@ angular.module('home.controller', ['underscore'])
 				$scope.predicate = "-created_at";
 			}
 			init();
+			if ($location.absUrl() === '') {
+				$scope.indi = false
+			} else if ($location.absUrl() === '/enrolls') {
+				$scope.indi = false
+			} else {
+				$scope.indi = true
+			}
 			$scope.cate = function($index) {
-				console.log($scope.data)
 				if (!$index) {
 					delete $scope.currentCate.topic
 				} else {
@@ -77,6 +83,7 @@ angular.module('home.controller', ['underscore'])
 			}
 			var bodyRef = angular.element($document[0].body);
 			$scope.open = function(model) {
+				model.url = $location.absUrl() + model.id
 				bodyRef.addClass('ovh');
 				$http.post('/view_increase', {
 					id: model.id
@@ -86,7 +93,7 @@ angular.module('home.controller', ['underscore'])
 				})
 				var modalInstance = $modal.open({
 					templateUrl: 'myModalContent.html',
-					controller: ModalInstanceCtrl,
+					controller: 'model',
 					resolve: {
 						items: function() {
 							return model;
@@ -105,21 +112,3 @@ angular.module('home.controller', ['underscore'])
 			}
 		}
 	]);
-controller("ModalInstanceCtrl", ['$sce', '$scope', '$modalInstance', 'items', '$timeout',
-	function($sce, $scope, $modalInstance, items, $timeout) {
-		$scope.items = items;
-		$timeout(function() {
-			var regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
-			var match = $scope.items.videoUrl.match(regExp);
-			if (match && match[2].length == 11) {
-				$('#youtubeCode').html('<iframe class="embed-responsive-item" width="300" height="168.75" src="//www.youtube.com/embed/' + match[2] + '" frameborder="0" allowfullscreen></iframe>');
-			}
-		}, 0)
-		$scope.ok = function() {
-			$modalInstance.close("ok");
-		};
-		$scope.cancel = function() {
-			$modalInstance.dismiss('cancel');
-		};
-	}
-]);

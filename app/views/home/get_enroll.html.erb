@@ -28,7 +28,10 @@
 <body ng-controller='enroll'>
 	<div id="wrapper" class="container">
 		<div id="main" class="row">
-			<form name='form' class="form-group center-block col-lg-6" novalidate>
+			<div ng-show='!login' class="center-block col-lg-6">
+				<a href='/auth/facebook' id='sign_in'>Sign in with Facebook</a>
+			</div>
+			<form name='enroll_form' class="form-group center-block col-lg-6" novalidate ng-show='login'>
 				<div ng-show='page==1'  style="width:100%;" >
 					<div class="row">
 						<span class="label label-primary">Name</span>
@@ -83,11 +86,10 @@
 							<option ng-repeat='topic in topics' value="{{topic.value}}" ng-bind='topic.index'></option>
 						</select>
 					</div>
-					{{enroll.topic}}
 					<div class="row">
 						<span class="label label-primary">Video info</span>
+						<textarea class="form-control" ng-model='enroll.videoInfo' popover-placement="right" style="width:100%" popover="I appeared on mouse enter!" popover-trigger="focus"></textarea>
 					</div>
-					<textarea class="form-control" ng-model='enroll.videoInfo' popover-placement="right" style="width:100%" popover="I appeared on mouse enter!" popover-trigger="focus"></textarea>
 					<button class="btn btn-primary" ng-click='previous(page)'>Previous</button>
 					<button class="btn btn-primary" ng-click='finish(page)'>Finish</button>
 					<a href="/" style="text-decoration: none;" class="btn btn-primary">
