@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
 	def get_current_user
 		if current_user
 			@user= current_user
+			p @user
 			render json: JSON.parse(@user.to_json(:include=>:enroll))
 		else
 			render json: JSON.parse({msg:'not login'}.to_json)
@@ -13,6 +14,7 @@ class ApplicationController < ActionController::Base
 	private
 
 	def current_user
+		p session[:user_id]
 		@current_user ||= User.find(session[:user_id]) if session[:user_id]
 	end
 	helper_method :current_user

@@ -20,7 +20,7 @@
 	<div id="features-wrapper">
 		<div class="container">
 			<div class="row">
-				<div class="4u" ng-repeat='enroll in enrolls' ng-click='open(enroll)'>
+				<div class="4u" ng-repeat='enroll in enrolls | limitTo : 6' ng-click='open(enroll)'>
 					<!-- Box -->
 					<section class="box feature"  >
 						<a class="image featured">
