@@ -8,7 +8,4 @@ class HomeController < ApplicationController
 	def show
 	end
 
-	def indi
-		@enroll = Enroll.find(params[:id])
-	end
 end

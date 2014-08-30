@@ -59,7 +59,7 @@ angular.module('home.controller', ['underscore'])
 				$http.get('/api/enrolls').success(function(data) {
 					$scope.enrolls = []
 					angular.forEach(data, function(value, index) {
-						if (value.topic !== undefined && value.videoUrl !== undefined && value.videoInfo !== undefined) {
+						if (value.topic !== null && value.videoUrl !== null && value.videoInfo !== null) {
 							$scope.enrolls.push(value)
 						}
 					})

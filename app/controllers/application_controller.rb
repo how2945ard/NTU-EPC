@@ -4,12 +4,9 @@ class ApplicationController < ActionController::Base
 	def get_current_user
 		if current_user
 			@user= current_user
-			p "CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC"
 			if (@user.enroll.nil?)
-			p "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAaA"
 				render json: JSON.parse(@user.to_json)
 			else
-			p "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB"
 				render json: JSON.parse(@user.to_json(:include=>:enroll))
 			end
 		else
