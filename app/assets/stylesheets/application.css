@@ -26,3 +26,11 @@
 .ovh {
     overflow: hidden;
 }
+.modal-tag{
+  margin-top: -40px;
+  padding: 20px;
+  float: right;
+}
+.model-html{
+  padding: 20px;
+}

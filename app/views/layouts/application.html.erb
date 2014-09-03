@@ -45,12 +45,14 @@
 							<img class="img-responsive" ng-src='{{items.image}}/convert?w=70&h=70'>
 						</div>
 						<h3 class="model-title" ng-bind='items.name' ></h3>
+						<ul class='modal-tag'>
+							<li ng-bind='topics[items.topic].index'></li>
+							<li ng-bind='"點閱次數: "+items.view'></li>
+						</ul>
 						<p>
 						<span ng-bind='items.school'></span>
 						<span ng-bind='items.major'></span>
 						<span ng-bind='years[items.year].index'></span>
-						<span ng-bind='topics[items.topic].index'></span>
-						<span ng-bind='items.view'></span>
 						</p>
 						<p ng-bind='items.videoInfo'>
 						</p>

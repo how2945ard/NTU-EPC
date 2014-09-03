@@ -7,11 +7,10 @@
 	<div id="features-wrapper">
 		<div class="container">
 			<div class="row">
-				<div class="1u" ng-click='cate()'>
-					All
-				</div>
-				<div class="1u" ng-repeat='topic in topics' ng-bind='topic.index' ng-click='cate(topic.value)'>
-				</div>
+			<tabset justified="true">
+		    <tab class="1u" heading="All" ng-click='cate()'></tab>
+		    <tab class="1u" ng-repeat='topic in topics' heading='{{topic.index}}' ng-click='cate(topic.value)'></tab>
+		  </tabset>
 			</div>
 			<div class="row">
 				<div class="4u" ng-repeat='enroll in enrolls |filter:currentCate' ng-click='open(enroll)'>

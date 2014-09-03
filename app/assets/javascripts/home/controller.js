@@ -107,7 +107,6 @@ angular.module('home.controller', ['underscore'])
 				}, function() {
 					// Remove it on dismissal
 					bodyRef.removeClass('ovh');
-					$log.info('Modal dismissed at: ' + new Date());
 				});
 			}
 		}

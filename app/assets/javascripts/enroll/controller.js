@@ -53,7 +53,6 @@ angular.module('enroll.controller', [])
 					value: 11,
 					index: '其他'
 				}]
-				console.log($scope.enroll_form)
 				$scope.page = 1;
 				$scope.enroll = {}
 				$scope.login = false
@@ -185,7 +184,6 @@ angular.module('enroll.controller', [])
 				}, function() {
 					// Remove it on dismissal
 					bodyRef.removeClass('ovh');
-					$log.info('Modal dismissed at: ' + new Date());
 				});
 			}
 		}
