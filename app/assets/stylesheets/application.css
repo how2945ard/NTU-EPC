@@ -16,6 +16,9 @@
 .center-block {
     float: none !important;
 }
+.inner{
+  margin-top: -20px;
+}
 .model-image {
     vertical-align: middle;
     display: inline-block!important;
