@@ -56,6 +56,7 @@ angular.module('enroll.controller', [])
 				$scope.page = 1;
 				$scope.enroll = {}
 				$scope.login = false
+				ga('send', 'enroll page view');
 				filepicker.setKey("APvIX7xbrQeyWbbxZ1bMbz");
 				$http.get('/get_current_user').success(function(data, status, headers, config) {
 					if (!data.msg) {
@@ -67,10 +68,12 @@ angular.module('enroll.controller', [])
 							function(data, status) {
 								if (status !== 200) {
 									$scope.enrolled = false
+									ga('send', 'enroll page view (login and not enrolled)');
 								} else {
 									$scope.enrolled = true
 									$scope.enroll = data
 									$scope.enroll_id = data.id
+									ga('send', 'enroll page view (login and enrolled)');
 									if (!$scope.enroll_form.videoUrl.$error.url && $scope.enroll.videoUrl) {
 										var regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
 										var match = $scope.enroll.videoUrl.match(regExp);
@@ -83,6 +86,7 @@ angular.module('enroll.controller', [])
 								}
 							})
 					} else {
+						ga('send', 'enroll page view (not login)');
 						$scope.login = false
 					}
 				})
@@ -168,6 +172,7 @@ angular.module('enroll.controller', [])
 			var bodyRef = angular.element($document[0].body);
 			$scope.open = function(model) {
 				bodyRef.addClass('ovh');
+				ga('send', 'sign up finish');
 				var modalInstance = $modal.open({
 					templateUrl: 'myModalContent.html',
 					controller: 'model',

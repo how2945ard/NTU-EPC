@@ -91,6 +91,7 @@ angular.module('home.controller', ['underscore'])
 					model.view = data.view
 					console.log(data)
 				})
+				ga('send', 'modal opened');
 				var modalInstance = $modal.open({
 					templateUrl: 'myModalContent.html',
 					controller: 'model',
