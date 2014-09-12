@@ -2,7 +2,7 @@
 /*global angular */
 'use strict';
 /* Directives */
-angular.module('home.controller', ['underscore'])
+angular.module('home.controller', ['underscore', 'duScroll'])
 	.controller("home", ['$sce', '$scope', '$http', '$window', '$modal', '$filter', '_', '$timeout', '$document', '$log', '$location',
 		function($sce, $scope, $http, $window, $modal, $filter, _, $timeout, $document, $log, $location) {
 			function init() {
@@ -67,6 +67,16 @@ angular.module('home.controller', ['underscore'])
 				$scope.predicate = "-created_at";
 			}
 			init();
+
+
+			$scope.goToBulletin = function() {
+				var someElement = angular.element(document.getElementById('why'));
+				$document.scrollToElement(someElement, 80, 2000);
+			}
+			$scope.goToTop = function() {
+				var someElement = angular.element(document.getElementById('top'));
+				$document.scrollToElement(someElement, 80, 2000);
+			}
 			if ($location.absUrl() === '') {
 				$scope.indi = false
 			} else if ($location.absUrl() === '/enrolls') {
