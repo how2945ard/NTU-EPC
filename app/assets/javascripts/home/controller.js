@@ -64,7 +64,7 @@ angular.module('home.controller', ['underscore', 'duScroll'])
 						}
 					})
 				})
-				$http.get('/articles.json').success(function(data) {
+				$http.get('/get_article.json').success(function(data) {
 					$scope.articles = []
 					if (data[0]) {
 						$scope.context = data[0].context

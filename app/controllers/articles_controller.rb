@@ -1,10 +1,17 @@
 class ArticlesController < ApplicationController
-  http_basic_authenticate_with :name => "admin", :password => "admin", except: [:show]
+  http_basic_authenticate_with :name => "admin", :password => "admin", except: [:api_index]
   # GET /articles
   # GET /articles.json
   def index
     @articles = Article.all
     @article = Article.new
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @articles }
+    end
+  end
+  def api_index
+    @articles = Article.all
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @articles }

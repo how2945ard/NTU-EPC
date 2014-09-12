@@ -7,6 +7,7 @@ Ntu::Application.routes.draw do
   end
   root :to => 'home#index'
   get '/get_enroll' => 'home#get_enroll'
+  get '/get_article' => 'articles#api_index'
   get '/enrolls' => 'home#show'
   get '/get_current_user' => 'application#get_current_user'
   post '/view_increase' => 'enrolls#view'
