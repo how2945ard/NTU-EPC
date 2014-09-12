@@ -1,4 +1,5 @@
 Ntu::Application.routes.draw do
+  resources :articles
   scope '/api' do
     resources :tags
     resources :enrolls

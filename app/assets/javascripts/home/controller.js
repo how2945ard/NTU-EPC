@@ -63,14 +63,29 @@ angular.module('home.controller', ['underscore', 'duScroll'])
 							$scope.enrolls.push(value)
 						}
 					})
-				}).finally(function() {});
+				})
+				$http.get('/articles.json').success(function(data) {
+					$scope.articles = []
+					if (data[0]) {
+						$scope.context = data[0].context
+					}
+					angular.forEach(data, function(value, index) {
+						$scope.articles.push(value)
+					})
+				})
 				$scope.predicate = "-created_at";
 			}
 			init();
 
-
-			$scope.goToBulletin = function() {
+			$scope.changeBulletin = function(article) {
+				$scope.context = article.context
+			}
+			$scope.goToWhy = function() {
 				var someElement = angular.element(document.getElementById('why'));
+				$document.scrollToElement(someElement, 80, 2000);
+			}
+			$scope.goToBulletin = function() {
+				var someElement = angular.element(document.getElementById('bulletin'));
 				$document.scrollToElement(someElement, 80, 2000);
 			}
 			$scope.goToTop = function() {

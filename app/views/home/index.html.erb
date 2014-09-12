@@ -11,7 +11,7 @@
 				<div class="5u">
 					<ul>
 						<li><a href="/get_enroll" class="button big icon fa-arrow-circle-right">Ok let's go</a></li>
-						<li><a ng-click="goToBulletin()" class="button alt big icon fa-question-circle">More info</a></li>
+						<li><a ng-click="goToWhy()" class="button alt big icon fa-question-circle">More info</a></li>
 					</ul>
 				</div>
 			</div>
@@ -68,44 +68,75 @@
 		</div>
 	</div>
 	<!-- Main -->
-	<div id="main-wrapper">
-		<div class="container">
-			<div class="row">
-				<div class="4u">
-					<!-- Sidebar -->
-					<div id="sidebar">
-						<section class="widget thumbnails">
-							<h3>Interesting stuff</h3>
-							<div class="grid">
-								<div class="row no-collapse half">
-									<div class="6u"><a href="#" class="image fit"><img src="images/pic04.jpg" alt="" /></a></div>
-									<div class="6u"><a href="#" class="image fit"><img src="images/pic05.jpg" alt="" /></a></div>
+	<div id="features-wrapper">
+		<div id="main-wrapper">
+			<div class="container">
+				<div class="row">
+					<div class="4u">
+						<!-- Sidebar -->
+						<div id="sidebar">
+							<section class="widget thumbnails">
+								<h3>Interesting stuff</h3>
+								<div class="grid">
+									<div class="row no-collapse half">
+										<div class="6u"><a href="#" class="image fit"><img src="images/pic04.jpg" alt="" /></a></div>
+										<div class="6u"><a href="#" class="image fit"><img src="images/pic05.jpg" alt="" /></a></div>
+									</div>
+									<div class="row no-collapse half">
+										<div class="6u"><a href="#" class="image fit"><img src="images/pic06.jpg" alt="" /></a></div>
+										<div class="6u"><a href="#" class="image fit"><img src="images/pic07.jpg" alt="" /></a></div>
+									</div>
 								</div>
-								<div class="row no-collapse half">
-									<div class="6u"><a href="#" class="image fit"><img src="images/pic06.jpg" alt="" /></a></div>
-									<div class="6u"><a href="#" class="image fit"><img src="images/pic07.jpg" alt="" /></a></div>
-								</div>
-							</div>
-							<!-- <a href="#" class="button icon fa-file-text-o">More</a> -->
-						</section>
+								<!-- <a href="#" class="button icon fa-file-text-o">More</a> -->
+							</section>
+						</div>
 					</div>
-				</div>
-				<div class="8u skel-cell-important">
-					<!-- Content -->
-					<div id="content">
-						<section class="last">
-							<a id='why' du-smooth-scroll></a>
-							<h2>宗旨：</h2>
-							<p>
-							國立臺灣大學貴為第一學府，其學生之學術能力無庸置疑。然而在職場上，專業知識固然重要，將這些知識匯集、統整、呈現，甚至是用適當的方式表達出來的能力更是不可或缺。況且在真正的工作環境中，主管跟教授看重簡報的觀點完全不一樣，往往導致學生剛進社會時無法適應業界之標準。由以上原因，我們期待藉此比賽，由業界及校內之相關專業人士指導，增進臺大學生的簡報與英文表達能力，提升校園內師生對該項技能培養之重視。同時讓學生有機會提前體驗在職場上實作簡報的能力，呈現業界標準之簡報。未來希望能成為規模與品質兼備，臺灣大學常態舉辦之比賽，並且推廣至全臺灣各大學。</p>
-							<!-- <a href="#" class="button icon fa-arrow-circle-right">Continue Reading</a> -->
-						</section>
+					<div class="8u skel-cell-important">
+						<!-- Content -->
+						<div id="content">
+							<section class="last">
+								<a id='why' du-smooth-scroll></a>
+								<h2>宗旨：</h2>
+								<p>
+								國立臺灣大學貴為第一學府，其學生之學術能力無庸置疑。然而在職場上，專業知識固然重要，將這些知識匯集、統整、呈現，甚至是用適當的方式表達出來的能力更是不可或缺。況且在真正的工作環境中，主管跟教授看重簡報的觀點完全不一樣，往往導致學生剛進社會時無法適應業界之標準。由以上原因，我們期待藉此比賽，由業界及校內之相關專業人士指導，增進臺大學生的簡報與英文表達能力，提升校園內師生對該項技能培養之重視。同時讓學生有機會提前體驗在職場上實作簡報的能力，呈現業界標準之簡報。未來希望能成為規模與品質兼備，臺灣大學常態舉辦之比賽，並且推廣至全臺灣各大學。</p>
+								<!-- <a href="#" class="button icon fa-arrow-circle-right">Continue Reading</a> -->
+							</section>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	<div class="row">
-		<button style="float:right;padding:10px;" class="2u btn" ng-click='goToTop()'>Back to top</button>
-	</div>
+	<div id="features-wrapper">
+		<div id="main-wrapper">
+			<div class="container">
+				<div class="row">
+					<div class="4u">
+						<!-- Sidebar -->
+						<div id="sidebar">
+							<section class="widget thumbnails">
+								<h2>Bulletin</h2>
+									<ul>
+										<li ng-repeat='article in articles' class="ellipsis"><a ng-bind='article.title' ng-click='changeBulletin(article)' href="#"></a></li>
+									</ul>
+							</section>
+						</div>
+					</div>
+					<div class="8u skel-cell-important">
+						<!-- Content -->
+						<div id="content">
+							<section class="last">
+								<h3>Content</h3>
+								<a id='bulletin' du-smooth-scroll></a>
+								<p ng-bind='context'>
+							</section>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<button style="float:right;padding:10px;" class="2u btn" ng-click='goToTop()'>Back to top</button>
+		</div>
+	</div
 </body>

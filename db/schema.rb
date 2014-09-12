@@ -11,7 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140828114357) do
+ActiveRecord::Schema.define(:version => 20140912180228) do
+
+  create_table "articles", :force => true do |t|
+    t.string   "title"
+    t.text     "context"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "enrolls", :force => true do |t|
     t.datetime "created_at", :null => false
