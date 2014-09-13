@@ -11,9 +11,5 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require alertify
-//= require underscore
-//= require jquery
-//= require jquery_ujs
-//= require tinymce-jquery
 //= require angular
 //= require_tree .
