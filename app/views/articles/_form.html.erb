@@ -17,7 +17,7 @@
   </div>
   <div class="field">
     <%= f.label :image %><br />
-    <img ng-src="{{image}}" width="70%">
+    <img ng-src="{{image}}" width="70%" style="max-height: 500px;">
     <%= f.text_field :image, :id=>"image" , :'ng-click' => 'image()' ,:value=>"{{image}}"%>
   </div>
   <div class="field">

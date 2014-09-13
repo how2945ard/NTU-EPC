@@ -7,7 +7,6 @@
 		<!-- Latest compiled and minified CSS -->
 		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-		<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 		<meta name="viewport" content="width=1200,user-scalable=no" />
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="description" content="" />
@@ -95,7 +94,8 @@
 								<li><a href="#">Veroeros feugiat</a></li>
 							</ul>
 						</li> -->
-						<li><a href="/get_enroll">Enroll now</a></li>
+						<li><a ng-if='current_user' href="/get_enroll">Enroll now</a></li>
+						<li><a ng-if='!current_user' href="/auth/facebook">Sign in and Enroll now</a></li>
 						<li><a href="#" ng-click='goToBulletin()'>Bulletin</a></li>
 						<li><a href="/enrolls">Videos</a></li>
 						<li ng-if='!!current_user'>
@@ -133,5 +133,6 @@
 				</div>
 			</footer>
 		</div>
+		<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 	</body>
 </html>
