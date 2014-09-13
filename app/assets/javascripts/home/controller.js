@@ -52,9 +52,7 @@ angular.module('home.controller', ['underscore', 'duScroll'])
 				}]
 				console.log('home')
 				$scope.changed = false;
-				$scope.currentCate = {
-					topic: 0
-				}
+				$scope.currentCate = {}
 				$scope.dataLoading = true;
 				$http.get('/api/enrolls').success(function(data) {
 					$scope.enrolls = []
