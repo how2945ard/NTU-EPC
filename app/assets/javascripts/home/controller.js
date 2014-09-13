@@ -88,7 +88,7 @@ angular.module('home.controller', ['underscore', 'duScroll'])
 			}
 			$scope.goToBulletin = function() {
 				console.log($location.absUrl() === 'http://www.ntuepc.com/' || $location.absUrl() === 'http://localhost:3000/')
-				if ($location.absUrl() === 'http://www.ntuepc.com/' || $location.absUrl() === 'http://localhost:3000/') {
+				if ($location.absUrl() === 'http://www.ntuepc.com/' || $location.absUrl() === 'http://localhost:3000/' || $location.absUrl() === 'http://ntuvrepc.herokuapp.com/') {
 					var someElement = angular.element(document.getElementById('bulletin'));
 					$document.scrollToElement(someElement, 80, 2000);
 				} else {

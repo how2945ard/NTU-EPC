@@ -13,7 +13,7 @@
 		  </tabset>
 			</div>
 			<div class="row">
-				<div class="4u" ng-repeat='enroll in enrolls |filter:currentCate | orderBy : predicate' ng-click='open(enroll)'>
+				<div class="4u" ng-repeat='enroll in enrolls |filter:currentCate:true | orderBy : predicate' ng-click='open(enroll)'>
 					<!-- Box -->
 					<section class="box feature"  >
 						<a class="image featured">
