@@ -6,13 +6,13 @@ angular.module('home.controller', ['underscore', 'duScroll'])
 	.controller("home", ['$sce', '$scope', '$http', '$window', '$modal', '$filter', '_', '$timeout', '$document', '$log', '$location',
 		function($sce, $scope, $http, $window, $modal, $filter, _, $timeout, $document, $log, $location) {
 			function init() {
-				$scope.topics = [{
-					value: 0,
-					index: 'choice1'
-				}, {
-					value: 1,
-					index: 'choice2'
-				}]
+		// $scope.topics = [{
+		// 	value: 0,
+		// 	index: 'choice1'
+		// }, {
+		// 	value: 1,
+		// 	index: 'choice2'
+		// }]
 				$scope.years = [{
 					value: 0,
 					index: '大學一年級'

@@ -9,13 +9,13 @@ angular.module('enroll.controller', [])
 		function($scope, $http, $window, $rootScope, $document, $modal) {
 			function init() {
 				console.log('enroll')
-				$scope.topics = [{
-					value: 0,
-					index: 'choice1'
-				}, {
-					value: 1,
-					index: 'choice2'
-				}]
+		// $scope.topics = [{
+		// 	value: 0,
+		// 	index: 'choice1'
+		// }, {
+		// 	value: 1,
+		// 	index: 'choice2'
+		// }]
 				$scope.years = [{
 					value: 0,
 					index: '大學一年級'
