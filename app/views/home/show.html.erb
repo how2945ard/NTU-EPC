@@ -7,9 +7,12 @@
 	<div id="features-wrapper">
 		<div class="container">
 			<div class="row">
+				<div class="2u">
+				Search: <input ng-model="search.$">
+				</div>
 			</div>
 			<div class="row">
-				<div class="4u" ng-repeat='enroll in enrolls |filter:currentCate:true | orderBy : predicate' ng-click='open(enroll)'>
+				<div class="4u" ng-repeat='enroll in enrolls |filter:currentCate:true | orderBy : predicate | filter:search' ng-click='open(enroll)'>
 					<!-- Box -->
 					<section class="box feature"  >
 						<a class="image featured">
