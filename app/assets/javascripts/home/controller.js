@@ -74,12 +74,11 @@ angular.module('home.controller', ['underscore', 'duScroll'])
 						$scope.articles.push(value)
 					})
 				})
-				$scope.predicate = "+view";
+				$scope.predicate = "-view";
 			}
 			init();
 
 			$scope.changeBulletin = function(article) {
-				console.log(article)
 				$scope.context = article.context
 				$scope.image = article.image
 			}
@@ -88,8 +87,13 @@ angular.module('home.controller', ['underscore', 'duScroll'])
 				$document.scrollToElement(someElement, 80, 2000);
 			}
 			$scope.goToBulletin = function() {
-				var someElement = angular.element(document.getElementById('bulletin'));
-				$document.scrollToElement(someElement, 80, 2000);
+				console.log($location.absUrl() === 'http://www.ntuepc.com/' || $location.absUrl() === 'http://localhost:3000/')
+				if ($location.absUrl() === 'http://www.ntuepc.com/' || $location.absUrl() === 'http://localhost:3000/') {
+					var someElement = angular.element(document.getElementById('bulletin'));
+					$document.scrollToElement(someElement, 80, 2000);
+				} else {
+					$window.location.href = '/bulletin'
+				}
 			}
 			$scope.goToTop = function() {
 				var someElement = angular.element(document.getElementById('top'));

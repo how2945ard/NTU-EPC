@@ -92,6 +92,15 @@ angular.module('enroll.controller', [])
 				})
 			}
 			init();
+			$scope.goToBulletin = function() {
+				console.log($location.absUrl() === 'http://www.ntuepc.com/' || $location.absUrl() === 'http://localhost:3000/')
+				if ($location.absUrl() === 'http://www.ntuepc.com/' || $location.absUrl() === 'http://localhost:3000/') {
+					var someElement = angular.element(document.getElementById('bulletin'));
+					$document.scrollToElement(someElement, 80, 2000);
+				} else {
+					$window.location.href = '/bulletin'
+				}
+			}
 			$scope.image = function() {
 				// bodyRef.addClass('ovh');
 				filepicker.pick(function(InkBlob) {

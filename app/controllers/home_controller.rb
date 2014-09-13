@@ -8,4 +8,6 @@ class HomeController < ApplicationController
 	def show
 	end
 
+  def bulletin
+  end
 end

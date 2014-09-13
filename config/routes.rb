@@ -9,6 +9,7 @@ Ntu::Application.routes.draw do
   get '/get_enroll' => 'home#get_enroll'
   get '/get_article' => 'articles#api_index'
   get '/enrolls' => 'home#show'
+  get '/bulletin' => 'home#bulletin'
   get '/get_current_user' => 'application#get_current_user'
   post '/view_increase' => 'enrolls#view'
   match 'auth/:provider/callback', to: 'sessions#create'

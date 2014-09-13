@@ -1,0 +1,37 @@
+<style type="text/css">
+  .box{
+    margin: 15px;
+  }
+</style>
+<body ng-controller='home'>
+  <div id="features-wrapper" ng-if='articles'>
+    <div id="main-wrapper">
+      <div class="container">
+        <div class="row">
+          <div class="4u">
+            <!-- Sidebar -->
+            <div id="sidebar">
+              <section class="widget thumbnails">
+                <h2>Bulletin</h2>
+                  <ul>
+                    <li ng-repeat='article in articles' class="ellipsis"><a ng-bind='article.title' ng-click='changeBulletin(article)' href="#"></a></li>
+                  </ul>
+              </section>
+            </div>
+          </div>
+          <div class="8u skel-cell-important">
+            <!-- Content -->
+            <div id="content">
+              <section class="last">
+                <h3>Content</h3>
+                <a id='bulletin' du-smooth-scroll></a>
+                  <img ng-src='{{image}}' width="100%" style="max-height: 500px;" ng-if='image'>
+                <p ng-bind='context'>
+                </p>
+              </section>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</body>
