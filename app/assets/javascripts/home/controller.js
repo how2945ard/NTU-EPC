@@ -111,7 +111,7 @@ angular.module('home.controller', ['underscore', 'duScroll'])
 				if (!$index) {
 					delete $scope.currentCate.topic
 				} else {
-					$scope.currentCate.topic = $index
+					$scope.currentCate.topic = "'" + $index
 				}
 				console.log($filter('filter')($scope.enrolls, $scope.currentCate, true))
 			}
