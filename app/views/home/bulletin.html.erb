@@ -19,7 +19,7 @@ margin: 15px;
               <section class="widget thumbnails">
                 <h2>Bulletin</h2>
                 <ul>
-                  <li ng-repeat='article in articles | filter:search' class="ellipsis"><a ng-bind='article.title' ng-click='changeBulletin(article)' href="#"></a></li>
+                  <li ng-repeat='article in articles | filter:search| orderBy: "-created_at"' class="ellipsis"><a ng-bind='article.title' ng-click='changeBulletin(article)' href="#"></a></li>
                 </ul>
               </section>
             </div>
@@ -30,6 +30,7 @@ margin: 15px;
               <section class="last">
                 <h3>Content</h3>
                 <a id='bulletin' du-smooth-scroll></a>
+                <span style='float:right;' ng-bind='created_at | date : mediumDate'></span>
                 <img ng-src='{{image}}' width="100%" style="max-height: 500px;" ng-if='image'>
                 <p ng-bind='context'>
                 </p>

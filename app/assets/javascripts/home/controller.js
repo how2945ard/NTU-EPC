@@ -69,6 +69,7 @@ angular.module('home.controller', ['underscore', 'duScroll'])
 					if (data[0]) {
 						$scope.context = data[0].context
 						$scope.image = data[0].image
+						$scope.created_at = data[0].created_at
 					}
 					angular.forEach(data, function(value, index) {
 						$scope.articles.push(value)
@@ -81,6 +82,7 @@ angular.module('home.controller', ['underscore', 'duScroll'])
 			$scope.changeBulletin = function(article) {
 				$scope.context = article.context
 				$scope.image = article.image
+				$scope.created_at = article.created_at
 			}
 			$scope.goToWhy = function() {
 				var someElement = angular.element(document.getElementById('why'));
