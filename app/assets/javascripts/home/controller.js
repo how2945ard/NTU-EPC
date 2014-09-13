@@ -61,6 +61,8 @@ angular.module('home.controller', ['underscore', 'duScroll'])
 					angular.forEach(data, function(value, index) {
 						if (value.topic !== null && value.videoUrl !== null && value.videoInfo !== null) {
 							$scope.enrolls.push(value)
+						} else {
+							console.log(value)
 						}
 					})
 				})
