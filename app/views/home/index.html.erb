@@ -10,7 +10,8 @@
 				</div>
 				<div class="5u">
 					<ul>
-						<li><a href="/get_enroll" class="button big icon fa-arrow-circle-right">Ok let's go</a></li>
+						<li><a ng-if='current_user' class="button big icon fa-arrow-circle-right" href="/get_enroll">Ok let's go</a></li>
+						<li><a ng-if='!current_user' class="button big icon fa-arrow-circle-right" href="/auth/facebook">Enroll now</a></li>
 						<li><a ng-click="goToWhy()" class="button alt big icon fa-question-circle">More info</a></li>
 					</ul>
 				</div>
