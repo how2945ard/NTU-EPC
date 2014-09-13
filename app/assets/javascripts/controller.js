@@ -11,5 +11,14 @@ angular.module('myApp.controller', [])
           $rootScope.current_user = data
         }
       })
+      filepicker.setKey("APvIX7xbrQeyWbbxZ1bMbz");
+      $scope.image = function() {
+        filepicker.pick(function(InkBlob) {
+          $scope.image = InkBlob.url
+          alertify.success('image uploaded')
+          $scope.$apply()
+          return InkBlob.url
+        });
+      }
     }
   ]);

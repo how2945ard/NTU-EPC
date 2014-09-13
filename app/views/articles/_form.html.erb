@@ -16,6 +16,11 @@
     <%= f.text_field :title %>
   </div>
   <div class="field">
+    <%= f.label :image %><br />
+    <img ng-src="{{image}}" width="70%">
+    <%= f.text_field :image, :id=>"image" , :'ng-click' => 'image()' ,:value=>"{{image}}"%>
+  </div>
+  <div class="field">
     <%= f.label :context %><br />
     <%= f.text_area :context %>
   </div>

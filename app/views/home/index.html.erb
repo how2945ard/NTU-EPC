@@ -22,7 +22,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="row">
-					<div class="4u" ng-repeat='enroll in enrolls |filter:currentCate' ng-click='open(enroll)'>
+					<div class="4u" ng-repeat='enroll in enrolls | filter : currentCate | orderBy : predicate' ng-click='open(enroll)'>
 						<!-- Box -->
 						<section class="box feature"  >
 							<a class="image featured">
@@ -107,7 +107,7 @@
 			</div>
 		</div>
 	</div>
-	<div id="features-wrapper">
+	<div id="features-wrapper" ng-if='articles'>
 		<div id="main-wrapper">
 			<div class="container">
 				<div class="row">
@@ -128,7 +128,9 @@
 							<section class="last">
 								<h3>Content</h3>
 								<a id='bulletin' du-smooth-scroll></a>
+									<img ng-src='{{image}}' width="100%" ng-if='image'>
 								<p ng-bind='context'>
+								</p>
 							</section>
 						</div>
 					</div>
