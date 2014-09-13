@@ -79,6 +79,7 @@ angular.module('home.controller', ['underscore', 'duScroll'])
 			init();
 
 			$scope.changeBulletin = function(article) {
+				console.log(article)
 				$scope.context = article.context
 				$scope.image = article.image
 			}

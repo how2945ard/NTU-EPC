@@ -32,7 +32,6 @@ class ArticlesController < ApplicationController
   # POST /articles.json
   def create
     @article = Article.new(params[:article])
-
     respond_to do |format|
       if @article.save
         format.html { redirect_to articles_url, notice: 'Article was successfully created.' }
