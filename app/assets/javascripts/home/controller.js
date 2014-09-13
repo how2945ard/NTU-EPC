@@ -107,6 +107,8 @@ angular.module('home.controller', ['underscore', 'duScroll'])
 				$scope.indi = true
 			}
 			$scope.cate = function($index) {
+				console.log($index)
+				console.log($filter('filter')($scope.enrolls, $scope.currentCate, true))
 				if (!$index) {
 					delete $scope.currentCate.topic
 				} else {
