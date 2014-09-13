@@ -7,10 +7,6 @@
 	<div id="features-wrapper">
 		<div class="container">
 			<div class="row">
-			<tabset justified="true">
-		    <tab class="1u" heading="All" ng-click='cate()'></tab>
-		    <tab class="1u" ng-repeat='topic in topics' heading='{{topic.index}}' ng-click='cate(topic.value)'></tab>
-		  </tabset>
 			</div>
 			<div class="row">
 				<div class="4u" ng-repeat='enroll in enrolls |filter:currentCate:true | orderBy : predicate' ng-click='open(enroll)'>
@@ -20,7 +16,6 @@
 							<img class="image_block" ng-src="{{enroll.image}}" onerror='this.src=""'>
 						</a>
 						<div class="inner">
-							<p style="padding:10px;font-size:20px; margin-top:-20px;" ng-bind='"#"+topics[enroll.topic].index'></p>
 							<header>
 								<h2 ng-bind='enroll.name'></h2>
 								<p>

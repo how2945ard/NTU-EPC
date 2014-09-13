@@ -57,7 +57,7 @@ angular.module('home.controller', ['underscore', 'duScroll'])
 				$http.get('/api/enrolls').success(function(data) {
 					$scope.enrolls = []
 					angular.forEach(data, function(value, index) {
-						if (value.topic !== null && value.videoUrl !== null && value.videoInfo !== null) {
+						if (value.videoUrl !== null && value.videoInfo !== null) {
 							$scope.enrolls.push(value)
 						} else {
 							console.log(value)

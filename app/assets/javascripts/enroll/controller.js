@@ -164,8 +164,8 @@ angular.module('enroll.controller', [])
 				if (page === 3) {
 					var require_videoUrl = $scope.enroll.videoUrl === undefined
 					var require_videoInfo = $scope.enroll.videoInfo === undefined
-					var require_topic = $scope.enroll.topic === undefined
-					if (require_videoUrl || require_videoUrl || require_topic || $scope.enroll_form.videoUrl.$error.url) {
+			var require_topic = $scope.enroll.topic === undefined
+					if (require_videoUrl || require_videoUrl || $scope.enroll_form.videoUrl.$error.url) {
 						alertify.error('Error, try again')
 					} else {
 						$scope.enroll.user_id = $rootScope.current_user.id
