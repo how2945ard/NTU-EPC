@@ -108,12 +108,12 @@ angular.module('home.controller', ['underscore', 'duScroll'])
 			}
 			$scope.cate = function($index) {
 				console.log($index)
-				console.log($filter('filter')($scope.enrolls, $scope.currentCate, true))
 				if (!$index) {
 					delete $scope.currentCate.topic
 				} else {
 					$scope.currentCate.topic = $index
 				}
+				console.log($filter('filter')($scope.enrolls, $scope.currentCate, true))
 			}
 			var bodyRef = angular.element($document[0].body);
 			$scope.open = function(model) {
