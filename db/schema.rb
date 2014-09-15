@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(:version => 20140913065415) do
     t.string   "image"
     t.string   "videoUrl"
     t.string   "videoInfo"
-    t.integer  "topic"
+    t.string   "topic"
     t.integer  "view"
     t.integer  "user_id"
   end

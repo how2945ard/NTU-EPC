@@ -6,13 +6,13 @@ angular.module('home.controller', ['underscore', 'duScroll'])
 	.controller("home", ['$sce', '$scope', '$http', '$window', '$modal', '$filter', '_', '$timeout', '$document', '$log', '$location',
 		function($sce, $scope, $http, $window, $modal, $filter, _, $timeout, $document, $log, $location) {
 			function init() {
-		// $scope.topics = [{
-		// 	value: 0,
-		// 	index: 'choice1'
-		// }, {
-		// 	value: 1,
-		// 	index: 'choice2'
-		// }]
+				// $scope.topics = [{
+				// 	value: 0,
+				// 	index: 'choice1'
+				// }, {
+				// 	value: 1,
+				// 	index: 'choice2'
+				// }]
 				$scope.years = [{
 					value: 0,
 					index: '大學一年級'
@@ -89,8 +89,8 @@ angular.module('home.controller', ['underscore', 'duScroll'])
 				$document.scrollToElement(someElement, 80, 2000);
 			}
 			$scope.goToBulletin = function() {
-				console.log($location.absUrl() === 'http://www.ntuepc.com/' || $location.absUrl() === 'http://localhost:3000/')
-				if ($location.absUrl() === 'http://www.ntuepc.com/' || $location.absUrl() === 'http://localhost:3000/' || $location.absUrl() === 'http://ntuvrepc.herokuapp.com/') {
+				console.log($scope.articles.length)
+				if ($scope.articles.length !== 0 && ($location.absUrl() === 'http://www.ntuepc.com/' || $location.absUrl() === 'http://localhost:3000/' || $location.absUrl() === 'http://ntuvrepc.herokuapp.com/')) {
 					var someElement = angular.element(document.getElementById('bulletin'));
 					$document.scrollToElement(someElement, 80, 2000);
 				} else {
