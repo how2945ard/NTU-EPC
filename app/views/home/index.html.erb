@@ -21,50 +21,50 @@
 	<!-- Features -->
 	<div id="features-wrapper">
 		<div class="container">
-				<div class="row">
-					<div class="4u" ng-repeat='enroll in enrolls | filter : currentCate | orderBy : predicate' ng-click='open(enroll)'>
-						<!-- Box -->
-						<section class="box feature"  >
-							<a class="image featured">
-								<img class="image_block" ng-src="{{enroll.image}}" onerror='this.src=""'>
-							</a>
-							<div class="inner">
+			<div class="row">
+				<div class="4u" ng-repeat='enroll in enrolls | filter : currentCate | orderBy : predicate' ng-click='open(enroll)'>
+					<!-- Box -->
+					<section class="box feature"  >
+						<a class="image featured">
+							<img class="image_block" ng-src="{{enroll.image}}" onerror='this.src=""'>
+						</a>
+						<div class="inner">
 							<p style="padding:10px;font-size:20px; margin-top:-20px;" ng-bind='enroll.topic'></p>
+							<header>
+								<h2 ng-bind='enroll.name'></h2>
+								<p>
+								<small ng-bind='enroll.school'></small>
+								<small ng-bind='enroll.major'></small>
+								<small ng-bind='years[enroll.year].index'></small>
+								<small><span ng-bind='"觀看次數: "+enroll.view'></span></small>
+								</p>
+							</header>
+							<p ng-bind='enroll.videoInfo | limitTo: 70'></p>
+							<p style="color:blue;" ng-if='enroll.videoInfo.length>=70'>
+							click to see more
+							</p>
+						</div>
+					</section>
+				</div>
+				<div class="4u" ng-if='enrolls.length<=10'>
+					<!-- Box -->
+					<a href="/get_enroll" style="text-decoration: none;">
+						<section class="box feature">
+							<div class="image featured">
+								<img class="image_block" src="http://cw1.tw/CW/images/article/C1397790720421.jpg" onerror='this.src=""'>
+							</div>
+							<div class="inner">
 								<header>
-									<h2 ng-bind='enroll.name'></h2>
+									<h2>YOU ARE THE NEXT</h2>
 									<p>
-									<small ng-bind='enroll.school'></small>
-									<small ng-bind='enroll.major'></small>
-									<small ng-bind='years[enroll.year].index'></small>
-									<small><span ng-bind='"觀看次數: "+enroll.view'></span></small>
+									Get Enrolled now
 									</p>
 								</header>
-								<p ng-bind='enroll.videoInfo | limitTo: 70'></p>
-								<p style="color:blue;" ng-if='enroll.videoInfo.length>=70'>
-								click to see more
-								</p>
 							</div>
 						</section>
-					</div>
-					<div class="4u" ng-if='enrolls.length<=10'>
-						<!-- Box -->
-						<a href="/get_enroll" style="text-decoration: none;">
-							<section class="box feature">
-								<div class="image featured">
-									<img class="image_block" src="http://cw1.tw/CW/images/article/C1397790720421.jpg" onerror='this.src=""'>
-								</div>
-								<div class="inner">
-									<header>
-										<h2>YOU ARE THE NEXT</h2>
-										<p>
-										Get Enrolled now
-										</p>
-									</header>
-								</div>
-							</section>
-						</a>
-					</div>
+					</a>
 				</div>
+			</div>
 		</div>
 	</div>
 	<!-- Main -->
@@ -76,15 +76,19 @@
 						<!-- Sidebar -->
 						<div id="sidebar">
 							<section class="widget thumbnails">
-								<h3>Interesting stuff</h3>
+								<h3>評審陣容</h3>
 								<div class="grid">
+									<div collapse="isCollapsed" ng-click="isCollapsed = !isCollapsed" class="12u">
+										<div class="well well-lg">敬請期待超強評審陣容</div>
+									</div>
+									<hr>
 									<div class="row no-collapse half">
-										<div class="6u"><a href="#" class="image fit"><img src="images/pic04.jpg" alt="" /></a></div>
-										<div class="6u"><a href="#" class="image fit"><img src="images/pic05.jpg" alt="" /></a></div>
+										<div class="6u"><a href="#" ng-click="isCollapsed = !isCollapsed" class="image fit"><img src="images/pic04.jpg" alt="" /></a></div>
+										<div class="6u"><a href="#" ng-click="isCollapsed = !isCollapsed" class="image fit"><img src="images/pic05.jpg" alt="" /></a></div>
 									</div>
 									<div class="row no-collapse half">
-										<div class="6u"><a href="#" class="image fit"><img src="images/pic06.jpg" alt="" /></a></div>
-										<div class="6u"><a href="#" class="image fit"><img src="images/pic07.jpg" alt="" /></a></div>
+										<div class="6u"><a href="#" ng-click="isCollapsed = !isCollapsed" class="image fit"><img src="images/pic06.jpg" alt="" /></a></div>
+										<div class="6u"><a href="#" ng-click="isCollapsed = !isCollapsed" class="image fit"><img src="images/pic07.jpg" alt="" /></a></div>
 									</div>
 								</div>
 								<!-- <a href="#" class="button icon fa-file-text-o">More</a> -->
@@ -116,9 +120,9 @@
 						<div id="sidebar">
 							<section class="widget thumbnails">
 								<h2>Bulletin</h2>
-									<ul>
-										<li ng-repeat='article in articles | orderBy: "-created_at"' class="ellipsis"><a ng-bind='article.title' ng-click='changeBulletin(article)' href="#"></a></li>
-									</ul>
+								<ul>
+									<li ng-repeat='article in articles | orderBy: "-created_at"' class="ellipsis"><a ng-bind='article.title' ng-click='changeBulletin(article)' href="#"></a></li>
+								</ul>
 							</section>
 						</div>
 					</div>
@@ -128,8 +132,8 @@
 							<section class="last">
 								<h3>Content</h3>
 								<a id='bulletin' du-smooth-scroll></a>
-								  <span style='float:right;' ng-bind='created_at | date : mediumDate'></span>
-									<img ng-src='{{image}}' width="100%" style="max-height: 500px;" ng-if='image'>
+								<span style='float:right;' ng-bind='created_at | date : mediumDate'></span>
+								<img ng-src='{{image}}' width="100%" style="max-height: 500px;" ng-if='image'>
 								<p ng-bind='context'>
 								</p>
 							</section>

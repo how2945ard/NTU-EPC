@@ -69,6 +69,7 @@ angular.module('home.controller', ['underscore', 'duScroll'])
 					})
 				})
 				$scope.predicate = "-view";
+				$scope.isCollapsed = true;
 			}
 			init();
 

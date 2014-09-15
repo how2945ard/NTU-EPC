@@ -5,6 +5,7 @@ class ArticlesController < ApplicationController
   def index
     @articles = Article.all
     @article = Article.new
+    @title = 'NTU EPC - Bulletin'
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @articles }
@@ -25,6 +26,7 @@ class ArticlesController < ApplicationController
 
   # GET /articles/1/edit
   def edit
+    @title = 'NTU EPC - Bulletin'
     @article = Article.find(params[:id])
   end
 
