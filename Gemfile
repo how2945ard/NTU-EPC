@@ -4,6 +4,7 @@ gem 'rails', '3.2.13'
 gem 'omniauth-facebook'
 gem 'tinymce-rails'
 gem 'tinymce-rails-langs'
+gem 'rack-cors', :require => 'rack/cors'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 

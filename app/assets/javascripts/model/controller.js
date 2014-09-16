@@ -3,8 +3,8 @@
 'use strict';
 /* Directives */
 angular.module('model.controller', [])
-	.controller("model", ['$sce', '$scope', '$modalInstance', 'items', '$timeout', '$log',
-		function($sce, $scope, $modalInstance, items, $timeout, $log) {
+	.controller("model", ['$sce', '$scope', '$modalInstance', 'items', '$timeout', '$log', '$http', '$filter',
+		function($sce, $scope, $modalInstance, items, $timeout, $log, $http, $filter) {
 			$scope.topics = [{
 				value: 0,
 				index: 'choice1'
@@ -53,6 +53,12 @@ angular.module('model.controller', [])
 			$timeout(function() {
 				var regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
 				var match = $scope.items.videoUrl.match(regExp);
+				$http.get('/youtube/' + match[2])
+					.success(function(data, status, headers, config) {
+						var likes = ((data.entry.gd$rating.average - 1) * data.entry.gd$rating.numRaters / 4)
+						console.log([data.entry.gd$rating, data.entry.yt$statistics])
+						$scope.likes = $filter('number')(likes, 0)
+					})
 				if (match && match[2].length == 11) {
 					$('#youtubeCode').html('<iframe class="embed-responsive-item" width="300" height="168.75" src="//www.youtube.com/embed/' + match[2] + '" frameborder="0" allowfullscreen></iframe>');
 				}
