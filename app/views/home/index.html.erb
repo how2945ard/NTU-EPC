@@ -137,7 +137,7 @@
               <div class="row">
                 <% @articles.each do |article| %>
                 <img class="6u" ng-show='id===<%= article.id %>' ng-src='<%= article.image %>' ng-if='image'>
-                <div class='6u' ng-show='id===<%= article.id %>'><%= article.context %></div>
+                <div class='6u' ng-show='id===<%= article.id %>'><%= article.context.html_safe %></div>
                 <% end %>
               </div>
             </section>
