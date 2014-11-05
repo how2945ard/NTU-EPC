@@ -14,7 +14,7 @@
         <td class="4u"><%= article.title %></td>
         <td class="6u"><%= article.context %></td>
         <td class="1u"><%= link_to 'Edit', edit_article_path(article) %></td>
-        <td class="1u"><%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td class="1u"><%= link_to 'Destroy', '/delete/noway/article/'+article.id.to_s %></td>
       </tr>
       <% end %>
     </table>

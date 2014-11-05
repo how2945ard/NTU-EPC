@@ -1,5 +1,6 @@
 Ntu::Application.routes.draw do
   resources :articles
+  get '/delete/noway/article/:id' => 'articles#destroy'
   scope '/api' do
     resources :tags
     resources :enrolls
