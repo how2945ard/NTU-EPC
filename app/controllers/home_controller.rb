@@ -1,6 +1,7 @@
 class HomeController < ApplicationController
   require 'net/http'
   def index
+    @articles = Article.all
   end
 
   def get_enroll
@@ -10,6 +11,7 @@ class HomeController < ApplicationController
   end
 
   def bulletin
+    @articles = Article.all
   end
 
   def getYoutube

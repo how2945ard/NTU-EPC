@@ -126,20 +126,23 @@
 							</section>
 						</div>
 					</div>
-					<div class="8u skel-cell-important">
-						<!-- Content -->
-						<div id="content">
-							<section class="last">
-								<h3>Content</h3>
-								<a id='bulletin' du-smooth-scroll></a>
-								<span style='float:right;' ng-bind='created_at | date : mediumDate'></span>
-								<img ng-src='{{image}}' width="100%" style="max-height: 500px;" ng-if='image'>
-								<p ng-bind='context'>
-								</p>
-							</section>
-						</div>
-					</div>
 				</div>
+        <div class="12u skel-cell-important">
+          <!-- Content -->
+          <div id="content">
+            <section class="last">
+              <h3>Content</h3>
+              <a id='bulletin' du-smooth-scroll></a>
+              <span style='float:right;' ng-bind='created_at | date : mediumDate'></span>
+              <div class="row">
+                <% @articles.each do |article| %>
+                <img class="6u" ng-show='id===<%= article.id %>' ng-src='<%= article.image %>' ng-if='image'>
+                <div class='6u' ng-show='id===<%= article.id %>'><%= article.context %></div>
+                <% end %>
+              </div>
+            </section>
+          </div>
+        </div>
 			</div>
 		</div>
 		<div class="row">

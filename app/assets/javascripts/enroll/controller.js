@@ -4,9 +4,9 @@
 
 /* Directives */
 angular.module('enroll.controller', [])
-	.controller("enroll", ['$scope', '$http', '$window', '$rootScope', '$document', '$modal',
+	.controller("enroll", ['$scope', '$http', '$window', '$rootScope', '$document', '$modal', '$location',
 
-		function($scope, $http, $window, $rootScope, $document, $modal) {
+		function($scope, $http, $window, $rootScope, $document, $modal, $location) {
 			function init() {
 				console.log('enroll')
 				$scope.years = [{

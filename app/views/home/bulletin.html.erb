@@ -8,36 +8,38 @@ margin: 15px;
     <div id="main-wrapper">
       <div class="container">
         <div class="row">
-          <div class="2u">
-            Search: <input ng-model="search.$">
-          </div>
-        </div>
-        <div class="row">
           <div class="4u">
             <!-- Sidebar -->
             <div id="sidebar">
               <section class="widget thumbnails">
                 <h2>Bulletin</h2>
                 <ul>
-                  <li ng-repeat='article in articles | filter:search| orderBy: "-created_at"' class="ellipsis"><a ng-bind='article.title' ng-click='changeBulletin(article)' href="#"></a></li>
+                  <li ng-repeat='article in articles | orderBy: "-created_at"' class="ellipsis"><a ng-bind='article.title' ng-click='changeBulletin(article)' href="#"></a></li>
                 </ul>
               </section>
             </div>
           </div>
-          <div class="8u skel-cell-important">
-            <!-- Content -->
-            <div id="content">
-              <section class="last">
-                <h3>Content</h3>
-                <a id='bulletin' du-smooth-scroll></a>
-                <span style='float:right;' ng-bind='created_at | date : mediumDate'></span>
-                <img ng-src='{{image}}' width="100%" style="max-height: 500px;" ng-if='image'>
-                <p ng-bind='context'>
-                </p>
-              </section>
-            </div>
+        </div>
+        <div class="12u skel-cell-important">
+          <!-- Content -->
+          <div id="content">
+            <section class="last">
+              <h3>Content</h3>
+              <a id='bulletin' du-smooth-scroll></a>
+              <span style='float:right;' ng-bind='created_at | date : mediumDate'></span>
+              <div class="row">
+                <% @articles.each do |article| %>
+                <img class="6u" ng-show='id===<%= article.id %>' ng-src='<%= article.image %>' ng-if='image'>
+                <div class='6u' ng-show='id===<%= article.id %>'><%= article.context %></div>
+                <% end %>
+              </div>
+            </section>
           </div>
         </div>
       </div>
     </div>
-  </body>
+    <div class="row">
+      <button style="float:right;padding:10px;" class="2u btn" ng-click='goToTop()'>Back to top</button>
+    </div>
+  </div>
+</body>

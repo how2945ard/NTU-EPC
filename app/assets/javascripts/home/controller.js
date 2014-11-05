@@ -60,6 +60,7 @@ angular.module('home.controller', ['underscore', 'duScroll'])
 				$http.get('/get_article.json').success(function(data) {
 					$scope.articles = []
 					if (data[0]) {
+						$scope.id = data[0].id
 						$scope.context = data[0].context
 						$scope.image = data[0].image
 						$scope.created_at = data[0].created_at
@@ -75,6 +76,7 @@ angular.module('home.controller', ['underscore', 'duScroll'])
 
 			$scope.changeBulletin = function(article) {
 				$scope.context = article.context
+				$scope.id = article.id
 				$scope.image = article.image
 				$scope.created_at = article.created_at
 			}
