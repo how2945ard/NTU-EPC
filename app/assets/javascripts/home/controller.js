@@ -59,11 +59,13 @@ angular.module('home.controller', ['underscore', 'duScroll'])
 				})
 				$http.get('/get_article.json').success(function(data) {
 					$scope.articles = []
-					if (data[0]) {
-						$scope.id = data[0].id
-						$scope.context = data[0].context
-						$scope.image = data[0].image
-						$scope.created_at = data[0].created_at
+					if (data.length > 0) {
+						console.log(data.length)
+						var last = data.length - 1
+						$scope.id = data[last].id
+						$scope.context = data[last].context
+						$scope.image = data[last].image
+						$scope.created_at = data[last].created_at
 					}
 					angular.forEach(data, function(value, index) {
 						$scope.articles.push(value)
