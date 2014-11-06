@@ -31,6 +31,10 @@ class ArticlesController < ApplicationController
   def edit
     @title = 'NTU EPC - Bulletin'
     @article = Article.find(params[:id])
+    # respond_to do |format|
+    #   format.html
+    #   format.json { render json: @articles }
+    # end
   end
 
   # POST /articles
