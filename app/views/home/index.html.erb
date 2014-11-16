@@ -1,3 +1,19 @@
+<style type="text/css">
+	.post-content {
+    /*background: none repeat scroll 0 0 #FFFFFF;*/
+    /*opacity: 0.5;*/
+    margin: -64px 20px 12px;
+    position: relative;
+    font-size: 40px;
+    color:white;
+    text-align: center;
+    text-decoration: none;
+	}
+	.judge{
+    text-decoration: none !important;
+    cursor: pointer;
+	}
+</style>
 <body class="homepage" ng-controller='home'>
 	<!-- Banner -->
 	<div id="banner-wrapper">
@@ -78,17 +94,13 @@
 							<section class="widget thumbnails">
 								<h3>評審陣容</h3>
 								<div class="grid">
-									<div collapse="isCollapsed" ng-click="isCollapsed = !isCollapsed" class="12u">
-										<div class="well well-lg">敬請期待超強評審陣容</div>
-									</div>
-									<hr>
 									<div class="row no-collapse half">
-										<div class="6u"><a href="#" ng-click="isCollapsed = !isCollapsed" class="image fit"><img src="images/pic04.jpg" alt="" /></a></div>
-										<div class="6u"><a href="#" ng-click="isCollapsed = !isCollapsed" class="image fit"><img src="images/pic05.jpg" alt="" /></a></div>
+										<div class="6u" data-toggle="modal" data-target="#g1"><a class="judge" ng-click="isCollapsed = !isCollapsed" class="image fit"><img src="images/pic04.jpg" alt="" /><div class='post-content'>侯建國</div></a></div>
+										<div class="6u"><a class="judge" ng-click="isCollapsed = !isCollapsed" class="image fit"><img src="images/pic05.jpg" alt="" /></a></div>
 									</div>
 									<div class="row no-collapse half">
-										<div class="6u"><a href="#" ng-click="isCollapsed = !isCollapsed" class="image fit"><img src="images/pic06.jpg" alt="" /></a></div>
-										<div class="6u"><a href="#" ng-click="isCollapsed = !isCollapsed" class="image fit"><img src="images/pic07.jpg" alt="" /></a></div>
+										<div class="6u"><a class="judge" ng-click="isCollapsed = !isCollapsed" class="image fit"><img src="images/pic06.jpg" alt="" /></a></div>
+										<div class="6u"><a class="judge" ng-click="isCollapsed = !isCollapsed" class="image fit"><img src="images/pic07.jpg" alt="" /></a></div>
 									</div>
 								</div>
 								<!-- <a href="#" class="button icon fa-file-text-o">More</a> -->
@@ -127,22 +139,22 @@
 						</div>
 					</div>
 				</div>
-        <div class="12u skel-cell-important">
-          <!-- Content -->
-          <div id="content">
-            <section class="last">
-              <h3>Content</h3>
-              <a id='bulletin' du-smooth-scroll></a>
-              <span style='float:right;' ng-bind='created_at | date : mediumDate'></span>
-              <div class="row">
-                <% @articles.each do |article| %>
-                <img class="6u" ng-show='id===<%= article.id %>' ng-src='<%= article.image %>' ng-if='image'>
-                <div class='6u' ng-show='id===<%= article.id %>'><%= article.context.html_safe %></div>
-                <% end %>
-              </div>
-            </section>
-          </div>
-        </div>
+				<div class="12u skel-cell-important">
+					<!-- Content -->
+					<div id="content">
+						<section class="last">
+							<h3>Content</h3>
+							<a id='bulletin' du-smooth-scroll></a>
+							<span style='float:right;' ng-bind='created_at | date : mediumDate'></span>
+							<div class="row">
+								<% @articles.each do |article| %>
+								<img class="6u" ng-show='id===<%= article.id %>' ng-src='<%= article.image %>' ng-if='image'>
+								<div class='6u' ng-show='id===<%= article.id %>'><%= article.context.html_safe %></div>
+								<% end %>
+							</div>
+						</section>
+					</div>
+				</div>
 			</div>
 		</div>
 		<div class="row">
@@ -150,3 +162,69 @@
 		</div>
 	</div>
 </body>
+<!-- Modal -->
+<div class="modal fade bs-example-modal-lg" id="g1" tabindex="-1" role="dialog" aria-labelledby="g1" aria-hidden="true">
+	<div class="modal-dialog modal-lg" style="width:80%;">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+				<h4 class="modal-title" id="g1">評審</h4>
+			</div>
+			<div class="modal-body">
+				<p>侯建國先生<br>
+				現任思圖組織行為研究中心-Training Works Out International全球策略長<br>
+				同時也是本次比賽的執行顧問！<br>
+				曾擔任過政府無數專案之主持人、評審委員、輔導顧問等，協助超過500家以上之企業，擁有一般訓練講師中難得一見的企業經驗。<br>
+				尤其侯先生為多家知名企業之講師，簡報課程屢次大獲好評！</p>
+				<ul>
+					<li> ● 台積電-簡報課程-講師平均滿意度100分，連續8梯不同階層&amp;部門的學員）</li>
+					<li> ● 康寧-英文簡報課程-講師平均滿意度97分，連續6次同階層&amp;部門的學員）</li>
+				</ul>
+				<span>過去經歷：</span>
+				<ul>
+					<li> ● 全球表演行為學院/思考力研究中心/業務行為研究中心 創辦人</li>
+					<li> ● 高雄市企業人力教育訓練發展協會FSTD 創辦人</li>
+					<li> ● PMI-TW專案經理職能發展顧問</li>
+					<li> ● Project Manager Competency Development Framework Second Edition 全球中文版翻譯召集人</li>
+					<li> ● PM Network in Taiwan 副總編輯</li>
+					<li> ● 駐巴拉圭大使秘書</li>
+					<li> ● 駐美國在台協會（AIT）連絡官</li>
+				</ul>
+				<span>學歷/證照：</span>
+				<ul>
+					<li> ● 哥倫比亞大學組織心理學碩士</li>
+					<li> ● 巴拉圭國立外交學院研究所</li>
+					<li> ● 美國Behavioral Research Center 公司-業務診斷&amp;訓練講師(全球合格認證)</li>
+					<li> ● 美國New York Conflict Resolution Center</li>
+					<li> ● 美國Raytheon公司 Negotiation Skills Training</li>
+				</ul>
+				<span>四大特色：</span>
+				<ul>
+					<li> ● 具有診斷及講師魅力
+						<ul>
+							<li> ● 少數兼具講師魅力&amp;顧問診斷力之雙棲專業(二十年以上經驗)。</li>
+						</ul>
+					</li>
+					<li> ● 具有教學設計之專業
+						<ul>
+							<li> ● 國內極少數出國深造相關科系，具教學系統設計之專業學歷。</li>
+						</ul>
+					</li>
+					<li> ● 具有95-100分滿意度
+						<ul>
+							<li> ● 平均學員滿意度為95-100分(講師教學穩定度=HR績效保證度)，真心將每位學員當作朋友。</li>
+						</ul>
+					</li>
+					<li> ● 具有跨產業&amp;國際觀之專業及經驗
+						<ul>
+							<li> ● 長期擔任業務/外交/顧問/經營等相關工作(不侷限特定經歷)，客戶不分大小，雙方用心、機會創新。</li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">關閉</button>
+			</div>
+		</div>
+	</div>
+</div>
