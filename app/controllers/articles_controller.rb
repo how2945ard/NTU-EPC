@@ -5,6 +5,7 @@ class ArticlesController < ApplicationController
   def index
     @articles = Article.all
     @users = User.all
+    @enrolls = Enroll.all
     @article = Article.new
     @title = 'NTU EPC - Bulletin'
     respond_to do |format|

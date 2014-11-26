@@ -1,44 +1,94 @@
+<link rel="stylesheet" href="//cdn.datatables.net/1.10.4/css/jquery.dataTables.min.css">
+<script type="text/javascript" src='//cdn.datatables.net/1.10.4/js/jquery.dataTables.min.js'></script>
+<script type="text/javascript">
+$(document).ready(function(){
+$('#enrolls').DataTable({"scrollX": true});
+$('#users').DataTable({"scrollX": true});
+});
+</script>
 <div id="features-wrapper" ng-controller='myApp'>
   <div class="container">
     <h1>Listing Users</h1>
-    <table>
-      <tr class="row">
-        <th class="2u">Image</th>
-        <th class="2u">Name</th>
-        <th class="2u">Email</th>
-        <th class="2u">Education</th>
-        <th class="2u">Gender</th>
-      </tr>
-      <% @users.each do |user| %>
-      <tr class="row">
-        <td class="2u"><%= image_tag(user.image) %></td>
-        <td class="2u"><%= user.name %></td>
-        <td class="2u"><%= user.email %></td>
-        <td class="2u"><%= user.education %></td>
-        <td class="2u"><%= user.gender %></td>
-      </tr>
-      <% end %>
+    <table id='users'>
+      <thead>
+        <th>Image</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Education</th>
+        <th>Gender</th>
+      </thead>
+      <tbody>
+        <% @users.each do |user| %>
+        <tr>
+          <td><%= image_tag(user.image) %></td>
+          <td><%= user.name %></td>
+          <td><%= user.email %></td>
+          <td><%= user.education %></td>
+          <td><%= user.gender %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <br />
+  </div>
+  <div class="container">
+    <h1>Listing Enrolls</h1>
+    <table id='enrolls'>
+      <thead>
+        <th>Image</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>School</th>
+        <th>Grade</th>
+        <th>Major</th>
+        <th>Cellphone</th>
+        <th>VideoUrl</th>
+        <th>VideoInfo</th>
+        <th>Topic</th>
+        <th>View</th>
+        <th>User_id</th>
+      </thead>
+      <tbody>
+        <% @enrolls.each do |enroll| %>
+        <tr>
+          <td><%= image_tag(enroll.image, width: '300px') %></td>
+          <td><%= enroll.name %></td>
+          <td><%= enroll.email %></td>
+          <td><%= enroll.school %></td>
+          <td><%= enroll.year %></td>
+          <td><%= enroll.major %></td>
+          <td><%= enroll.cellphone %></td>
+          <td><%= enroll.videoUrl %></td>
+          <td><%= enroll.videoInfo %></td>
+          <td><%= enroll.topic %></td>
+          <td><%= enroll.view %></td>
+          <td><%= enroll.user_id %></td>
+        </tr>
+        <% end %>
+      </tbody>
     </table>
     <br />
   </div>
   <div class="container">
     <h1>Listing articles</h1>
     <table>
-      <tr class="row">
+      <thead class="row">
         <th class="4u">Title</th>
         <th class="6u">Context</th>
         <th></th>
         <th></th>
         <th></th>
-      </tr>
-      <% @articles.each do |article| %>
-      <tr class="row">
-        <td class="4u"><%= article.title %></td>
-        <td class="6u"><%= article.context.html_safe %></td>
-        <td class="1u"><%= link_to 'Edit', edit_article_path(article) %></td>
-        <td class="1u"><%= link_to 'Destroy', '/delete/noway/article/'+article.id.to_s %></td>
-      </tr>
-      <% end %>
+      </thead>
+      <tbody>
+        <% @articles.each do |article| %>
+        <tr class="row">
+          <td class="4u"><%= article.title %></td>
+          <td class="6u"><%= article.context.html_safe %></td>
+          <td class="1u"><%= link_to 'Edit', edit_article_path(article) %></td>
+          <td class="1u"><%= link_to 'Destroy', '/delete/noway/article/'+article.id.to_s %></td>
+        </tr>
+        <% end %>
+      </tbody>
     </table>
     <br />
     <%= render 'form' %>
