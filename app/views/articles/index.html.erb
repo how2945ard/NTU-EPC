@@ -1,5 +1,27 @@
 <div id="features-wrapper" ng-controller='myApp'>
   <div class="container">
+    <h1>Listing Users</h1>
+    <table>
+      <tr class="row">
+        <th class="2u">Image</th>
+        <th class="2u">Name</th>
+        <th class="2u">Email</th>
+        <th class="2u">Education</th>
+        <th class="2u">Gender</th>
+      </tr>
+      <% @users.each do |user| %>
+      <tr class="row">
+        <td class="2u"><%= image_tag(user.image) %></td>
+        <td class="2u"><%= user.name %></td>
+        <td class="2u"><%= user.email %></td>
+        <td class="2u"><%= user.education %></td>
+        <td class="2u"><%= user.gender %></td>
+      </tr>
+      <% end %>
+    </table>
+    <br />
+  </div>
+  <div class="container">
     <h1>Listing articles</h1>
     <table>
       <tr class="row">
