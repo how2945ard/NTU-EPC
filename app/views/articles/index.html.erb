@@ -51,7 +51,7 @@ $('#users').DataTable({"scrollX": true});
       <tbody>
         <% @enrolls.each do |enroll| %>
         <tr>
-          <td><%= image_tag(enroll.image, width: '300px') %></td>
+          <td><%= image_tag(enroll.image, width: '50px') %></td>
           <td><%= enroll.name %></td>
           <td><%= enroll.email %></td>
           <td><%= enroll.school %></td>
